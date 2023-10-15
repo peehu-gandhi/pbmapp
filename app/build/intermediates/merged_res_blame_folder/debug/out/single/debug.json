@@ -1,0 +1,782 @@
+[
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_done.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\done.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bg.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bg.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_next.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\next.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_add.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\add.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_add.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\add.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_fabv.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\fabv.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_buttonstyle.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\buttonstyle.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg6_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg6_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_arrow_right.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow_right.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_the_slider_background.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\the_slider_background.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_family_time.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\family_time.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_arrow_right.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_arrow_right.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg1_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg1_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_border.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\rounded_border.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_register.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_register.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_done.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\done.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_discover.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_discover.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_next.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\next.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow_right.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_arrow_right.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_favorite_black_24dp.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_favorite_black_24dp.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_next.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\next.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_email.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_email.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_done.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\done.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_one.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_one.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bookim.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bookim.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_email.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_email.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_next.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\next.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_phone.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\phone.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg6.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg6.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\font_book_font.ttf.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\font\\book_font.ttf"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_favorite_black_24dp.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_favorite_black_24dp.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow_left.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_arrow_left.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_email.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_email.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_done.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\done.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_icon.PNG.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\icon.PNG"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_slider_unselected_dot.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\slider_unselected_dot.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_speak.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\speak.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\font_indigo_daisy.ttf.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\font\\indigo_daisy.ttf"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_phone.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\phone.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_favorite_black_24dp.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_favorite_black_24dp.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_arrow_right.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_arrow_right.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_book3.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\book3.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_lovely_time.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\lovely_time.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg7_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg7_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_next.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\next.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_favorite_black_24dp.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_favorite_black_24dp.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_arrow_left.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_arrow_left.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_radio_txt_color.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\radio_txt_color.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_done.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\done.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_next.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\next.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_writenow.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\writenow.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bookcover2.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bookcover2.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_slider_selected_dot.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\slider_selected_dot.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\anim_viewholder_add_anim.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\anim\\viewholder_add_anim.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_booklogo.jpeg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\booklogo.jpeg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg5_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg5_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_phone.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\phone.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg5.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg5.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_yourbuttonbackground.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\yourbuttonbackground.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_favorite_black_24dp.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_favorite_black_24dp.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_fabv.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\fabv.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bookpngor2.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bookpngor2.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_fabv.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\fabv.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_add.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\add.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_my_acc.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\my_acc.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_my_acc.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\my_acc.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_arrow_left.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow_left.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_done.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\done.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_make_cover.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\make_cover.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg4.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg4.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_bg_purple.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_bg_purple.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_user_profile.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_user_profile.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_publish_book.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_publish_book.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_favorite_black_24dp.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_favorite_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\font_bon.ttf.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\font\\bon.ttf"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_trending.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_trending.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_b.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\b.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_my_acc.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\my_acc.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_favorite_black_24dp.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_favorite_black_24dp.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_slider_dot_selector.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\slider_dot_selector.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_account.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\account.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_widget_layout.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\widget_layout.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bookpng.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bookpng.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_team_time.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\team_time.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bookquote.PNG.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bookquote.PNG"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_book_list_layout.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\book_list_layout.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_my_acc.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\my_acc.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_button_bg.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_button_bg.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg1.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg1.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_et_custom.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\et_custom.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg2.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg2.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_fabv.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\fabv.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_custom.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\btn_custom.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_a.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\a.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_login.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_login.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_next.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\next.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_email.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_email.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_book.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\item_book.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_arrow_left.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_arrow_left.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_loading.gif.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\loading.gif"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_phone.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\phone.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_fabv.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\fabv.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edittext_stoke_borders.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\edittext_stoke_borders.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_button.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\rounded_button.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_my_books.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_my_books.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_reward.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_reward.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg3.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg3.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_redeem.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_redeem.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_fabv.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\fabv.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_indicator_selector.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\indicator_selector.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_done.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\done.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_slider_item.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\slider_item.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_all_books.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_all_books.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg4_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg4_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bguser.jpeg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bguser.jpeg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_phone.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\phone.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_fabv.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\fabv.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_upload.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\upload.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_add.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\add.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_home.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_arrow_right.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_arrow_right.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_pin.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\pin.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_phone.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\phone.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_phone.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\phone.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_radio_normal.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\radio_normal.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_offers.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_offers.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_email.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_email.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_arrow_right.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_arrow_right.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_radio_selected.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\radio_selected.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_arrow_right.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow_right.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\anim_viewholder_remove_animation.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\anim\\viewholder_remove_animation.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_my_acc.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\my_acc.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_me_time.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\me_time.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg3_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg3_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg2_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg2_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_arrow_left.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow_left.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_layout.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\dialog_layout.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradientbackground.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\gradientbackground.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_points.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\points.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_round.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\bg_round.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_bg_blue.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_bg_blue.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_home.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\home.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_my_acc.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\my_acc.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto_regular.ttf.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\font\\roboto_regular.ttf"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_deals.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_deals.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_add.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\add.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_radio_selector.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\radio_selector.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_trend.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\trend.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bookpngor.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bookpngor.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_bg_green.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_bg_green.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_add.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\add.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_calendar.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\calendar.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rect.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\rect.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bguser2.jpg.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\bguser2.jpg"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_email.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_email.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_my_acc.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\my_acc.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_pdfupload.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\pdfupload.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_bg_red.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_bg_red.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_new.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_new.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_add.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\add.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_arrow_left.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_arrow_left.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_slider_item.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_slider_item.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_container_bg.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\container_bg.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\menu_bottom_nav_menu.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_explore.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\explore.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_friends.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable-v24\\friends.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_arrow_left.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_arrow_left.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_about.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\fragment_about.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_email.png.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_email.png"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login_and_register.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\activity_login_and_register.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_button2.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\drawable\\rounded_button2.xml"
+    },
+    {
+        "merged": "D:\\bookbub\\BookBub-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_publish_book_pg7.xml.flat",
+        "source": "D:\\bookbub\\BookBub-master\\app\\src\\main\\res\\layout\\publish_book_pg7.xml"
+    }
+]
