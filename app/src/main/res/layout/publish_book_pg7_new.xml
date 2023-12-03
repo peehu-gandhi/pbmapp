@@ -61,12 +61,12 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
-                    android:id="@+id/et_email_address"
+                <EditText
+                android:id="@+id/et_email_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="example@email.com"
-                    android:textSize="16sp"
+                android:inputType="textEmailAddress"
+
                     android:layout_marginBottom="16dp" />
 
                 <!-- Mobile Number -->
@@ -79,12 +79,11 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <EditText
                     android:id="@+id/et_mobile_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="123-456-7890"
-                    android:textSize="16sp"
+                    android:inputType="phone"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Landline Number -->
@@ -97,12 +96,11 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <EditText
                     android:id="@+id/et_landline_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="987-654-3210"
-                    android:textSize="16sp"
+                    android:inputType="phone"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Residence Number -->
@@ -115,12 +113,11 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <EditText
                     android:id="@+id/et_residence_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="876-543-2109"
-                    android:textSize="16sp"
+                    android:inputType="phone"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Address Line 1 -->
@@ -133,7 +130,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <EditText
                     android:id="@+id/et_address_line1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,7 +148,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <EditText
                     android:id="@+id/et_address_line2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,16 +158,6 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <Button android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="@font/roboto_regular"
-            android:layout_marginBottom="30dp"
-            android:text="@string/register"
-            android:id="@+id/btn_register"
-            android:background="@drawable/btn_custom"
-            android:layout_marginRight="20dp"
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"/>
+
     </LinearLayout>
 </LinearLayout>

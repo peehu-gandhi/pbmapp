@@ -38,10 +38,13 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.bookbub.model.Book;
 import com.github.barteksc.pdfviewer.PDFView;
 
 import org.json.JSONArray;
@@ -66,6 +69,7 @@ public class BookDetailsActivity extends AppCompatActivity {
     TextView hindi,tamil,gujarati,english;
     CardView cardtamil,cardhindi,cardenglish,cardgujarati;
     CardView cardscifi,cardhorror,cardcomedy,cardstudy;
+    String first_name, middle_name, last_name, gender, dob, place_of_birth, str_profile_image, height, str_weight, complexion, str_spectacles, physial_handicap, education, occupation, income, origin_of_family, no_of_brothers, no_of_sisters, no_of_brothers_married, no_of_sisters_married, no_of_brothers_unmarried, no_of_sisters_unmarried, hobbies, manglik, required_education_of_partner, age_group_preference_for_partner, required_height_of_partner, required_weight_of_partner, email_address, mobile_number, landline_number, residence_number, address_line_1, address_line_2, aadhar_card_or_pan_card, latest_education_qualification, string_income_proof, fee_submitted_2000_proof,profile_status;
 
 
     Uri filePath;
@@ -85,13 +89,13 @@ public class BookDetailsActivity extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private ViewPager.OnPageChangeListener mPageChangeListener;
     TextView bookname,desc,authorname;
-
+    String ur="https://pbmabad.000webhostapp.com/Php_user_detail.php";
     RelativeLayout rv;
     private TextView[] dots;
     String strname=null,strdesc=null;
     ImageView book_img,profile_image;
     Button btn_login;
-    String strnm;
+    String strnm,pid;
     String path="";
     private int[] layouts;
     EditText tvname = null,tvdesc = null;
@@ -111,10 +115,14 @@ public class BookDetailsActivity extends AppCompatActivity {
                 path= null;
             } else {
                 path= extras.getString("physical_path");
+                pid=extras.getString("pid");
             }
         } else {
             path= (String) savedInstanceState.getSerializable("physical_path");
+            pid= (String) savedInstanceState.getSerializable("pid");
+
         }
+//        fillDetails();
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
@@ -132,6 +140,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+        viewPager.setOffscreenPageLimit(layouts.length - 1);
 
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +211,9 @@ public class BookDetailsActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+
+
     private void showFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -215,12 +227,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         byte[] imgByte = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgByte,Base64.DEFAULT);
     }
-    private void selectImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 100);
-    }
+
     private void addBottomDots(int currentPage)
     {
         dots = new TextView[layouts.length];
@@ -340,7 +347,7 @@ public class BookDetailsActivity extends AppCompatActivity {
             if(position == 0)
             {
 
-                //   Toast.makeText(NewActivity.this, "opopopopopooooo1", Toast.LENGTH_SHORT).show();
+
                 profile_image=view.findViewById(R.id.profile_image);
                 RequestOptions options = new RequestOptions()
                         .placeholder(R.drawable.bookcover2)
@@ -348,295 +355,334 @@ public class BookDetailsActivity extends AppCompatActivity {
 
                 Glide.with(getApplicationContext()).load(path).apply(options).into(profile_image);
 
-//                profile_image.se
-//                english=view.findViewById(R.id.english);
-//                gujarati=view.findViewById(R.id.gujarati);
-//                tamil=view.findViewById(R.id.tamil);
-//                cardhindi=view.findViewById(R.id.cardhindi);
-//                cardenglish=view.findViewById(R.id.cardenglish);
-//                cardgujarati=view.findViewById(R.id.cardgujarati);
-//                cardtamil=view.findViewById(R.id.cardtamil);
-
-
-//                cardhindi.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        hindi.setTextColor(getResources().getColor(R.color.white));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                        gujarati.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.white));
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                    }
-//                });
-//                cardenglish.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        english.setTextColor(getResources().getColor(R.color.white));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        gujarati.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.white));
-//                        hindi.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.white));
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                        //selected="english";
-//                    }
-//                });
-//                cardgujarati.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        gujarati.setTextColor(getResources().getColor(R.color.white));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        //selected="english";
-//                        hindi.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.white));
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                    }
-//                });
-//                cardtamil.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                        gujarati.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.white));
-//                        hindi.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.white));
-//                        //selected="english";
-//                    }
-//                });
-//
-//
-//
-//
-//
-//                TextView txt_choose=view.findViewById(R.id.txt_choose);
-//                txt_choose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                    }
-//                });
             }
             if(position == 1)
             {
-                TextView txt_choose=view.findViewById(R.id.txt_choose);
-//                TextView scifi,horror,comedy,study;
-//                scifi=view.findViewById(R.id.scifi);
-//                horror=view.findViewById(R.id.horror);
-//                comedy=view.findViewById(R.id.comedy);
-//                study=view.findViewById(R.id.study);
-//                cardscifi=view.findViewById(R.id.cardscifi);
-//                cardhorror=view.findViewById(R.id.cardcomedy);
-////                cardstudy=view.findViewById(R.id.cardstudy);ew.findViewById(R.id.cardhorror);
-//                cardcomedy=vi
-                txt_choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
+                TextView et_first_name,et_middle_name,et_last_name,et_gender,et_dob,et_place_of_birth,et_profile_status;
+                et_first_name=view.findViewById(R.id.et_first_name);
+                et_middle_name=view.findViewById(R.id.et_middle_name);
+                et_last_name=view.findViewById(R.id.et_last_name);
+                et_gender = view.findViewById(R.id.et_gender);
+                et_dob = view.findViewById(R.id.et_dob);
+                et_place_of_birth = view.findViewById(R.id.et_place_of_birth);
+                et_profile_status = view.findViewById(R.id.et_profile_status);
 
-//
-//                cardhorror.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        horror.setTextColor(getResources().getColor(R.color.white));
-//                        cardhorror.setBackgroundColor(getResources().getColor(R.color.startblue));
-//
-//                    }
-//                });
-//                cardcomedy.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        comedy.setTextColor(getResources().getColor(R.color.white));
-//                        cardcomedy.setBackgroundColor(getResources().getColor(R.color.startblue));
-//
-//                        //selected="english";
-//                    }
-//                });
-//                cardstudy.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        study.setTextColor(getResources().getColor(R.color.white));
-//                        cardstudy.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        //selected="english";
-//                    }
-//                });
-//                cardscifi.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        scifi.setTextColor(getResources().getColor(R.color.white));
-//                        cardscifi.setBackgroundColor(getResources().getColor(R.color.startblue));
-//
-//                        //selected="english";
-//                    }
-//                });
-//
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ur,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray array = new JSONArray(response);
+                                    for (int i = 0; i<array.length(); i++){
+                                        JSONObject object = array.getJSONObject(i);
+                                        et_first_name.setText(object.getString("first_name"));
+                                        et_middle_name.setText(object.getString("middle_name"));
+                                        et_last_name.setText(object.getString("last_name"));
+                                        et_gender.setText((object.getString("gender")=="M")?"Male":"Female");
+                                        et_dob.setText(object.getString("dob_place"));
+                                        et_place_of_birth.setText(object.getString("dob_time"));
+                                        et_profile_status.setText(object.getString("profile_status"));
+                                    }
+                                }catch (Exception e){
+                                    System.out.println("here exception==>"+e.getMessage());
+                                }
+//                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
+//                        recyclerView.setAdapter(mAdapter);
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("pid", pid);
+                        return params;
+
+                    }
+                };
+
+                Volley.newRequestQueue(BookDetailsActivity.this).add(stringRequest);
 
 
 
             }
             if(position == 2)
             {
-//                tvname=findViewById(R.id.name);
-//                tvdesc=findViewById(R.id.desc);
-//                tvname.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        strnm=tvname.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
+
+                TextView et_height,et_weight,et_complexion,et_spectacles,et_physical_handicap;
+                et_height = view.findViewById(R.id.et_height);
+                et_weight = view.findViewById(R.id.et_weight);
+                et_complexion = view.findViewById(R.id.et_complexion);
+                et_spectacles = view.findViewById(R.id.et_spectacles);
+                et_physical_handicap = view.findViewById(R.id.et_physical_handicap);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ur,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray array = new JSONArray(response);
+                                    for (int i = 0; i<array.length(); i++){
+                                        JSONObject object = array.getJSONObject(i);
+                                        et_height.setText(object.getString("height"));
+                                        et_weight.setText(object.getString("weight"));
+                                        et_complexion.setText(object.getString("complexion"));
+                                        et_spectacles.setText(object.getString("spectacles"));
+                                        et_physical_handicap.setText(object.getString("pysical_handicap"));
+                                    }
+                                }catch (Exception e){
+                                    System.out.println("here exception==>"+e.getMessage());
+                                }
+//                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
+//                        recyclerView.setAdapter(mAdapter);
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("pid", pid);
+                        return params;
+
+                    }
+                };
+
+                Volley.newRequestQueue(BookDetailsActivity.this).add(stringRequest);
+
+
 
             }
 
             if(position==3){
-//                View v2=layoutInflater.inflate(R.layout.make_cover,null,false);
-//                bookname=v2.findViewById(R.id.bookname);
-//                desc=v2.findViewById(R.id.desc);
-//                authorname=v2.findViewById(R.id.authorname);
-//                bookname.setText(strname);
-//                desc.setText(strdesc);
-//                btn_login= view.findViewById(R.id.btn_login);
-//                btn_login.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        // uploadImage();
-//                        //  uploadretrofit();
-//                        selectImage();
-//                    }
-//                });
-//                authorname.setText("Peehu");
-////                book_img=view.findViewById(R.id.book_img);
-//                rv=v2.findViewById(R.id.rv);
-//                book_img.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        selectImage();
-//                    }
-//                });
-//                View v=layoutInflater.inflate(R.layout.make_cover,null,false);
-//                TextView bn=v.findViewById(R.id.bookname);
-//                TextView d=v.findViewById(R.id.desc);
-//                if(strname!=null)Toast.makeText(NewActivity.this, "val=="+strname, Toast.LENGTH_SHORT).show();
-//                v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
-//               // bn.setText(tvname.getText().toString());
-//                //d.setText(tvdesc.getText().toString());
-//                Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-//                Canvas c = new Canvas(b);
-//                v.draw(c);
+                TextView et_income,et_occ,et_edu;
+
+                et_income = view.findViewById(R.id.et_income);
+                et_occ = view.findViewById(R.id.et_occ);
+                et_edu = view.findViewById(R.id.et_edu);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ur,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray array = new JSONArray(response);
+                                    for (int i = 0; i<array.length(); i++){
+                                        JSONObject object = array.getJSONObject(i);
+                                        et_income.setText(object.getString("income"));
+                                        et_occ.setText(object.getString("occupation"));
+                                        et_edu.setText(object.getString("education"));
+
+                                    }
+                                }catch (Exception e){
+                                    System.out.println("here exception==>"+e.getMessage());
+                                }
+//                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
+//                        recyclerView.setAdapter(mAdapter);
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("pid", pid);
+                        return params;
+
+                    }
+                };
+
+                Volley.newRequestQueue(BookDetailsActivity.this).add(stringRequest);
+
+
+
             }
             if(position==4)
             {
-//                bt=view.findViewById(R.id.bt);
-//                System.out.println("here="+booknm);
-//                tvchoose=view.findViewById(R.id.tvchoose);
-//                btnchoose=view.findViewById(R.id.btnchoose);
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        uploadretrofit(strnm);
-//                        Toast.makeText(BookDetailsActivity.this, "Book Uploaded", Toast.LENGTH_SHORT).show();
-//                        Intent i=new Intent(getApplicationContext(),AllBooks.class);
-//                        startActivity(i);
-//
-//
-//                    }
-//                });
-//                btnchoose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        Intent choosefile = new Intent(Intent.ACTION_GET_CONTENT);
-//                        choosefile.setType("application/pdf");
-//                        choosefile = Intent.createChooser(choosefile, "Choose a file");
-//                        startActivityForResult(choosefile, 21);
-//                        bt.setVisibility(View.VISIBLE);
-//                    }
-//                });
+                TextView et_origin_of_family,et_number_of_brothers,et_number_of_sisters,et_number_of_brothers_married,et_number_of_sisters_married,et_number_of_brothers_unmarried,et_number_of_sisters_unmarried;
+
+                et_origin_of_family = view.findViewById(R.id.et_origin_of_family);
+                et_number_of_brothers = view.findViewById(R.id.et_number_of_brothers);
+                et_number_of_sisters = view.findViewById(R.id.et_number_of_sisters);
+                et_number_of_brothers_married = view.findViewById(R.id.et_number_of_brothers_married);
+                et_number_of_sisters_married = view.findViewById(R.id.et_number_of_sisters_married);
+                et_number_of_brothers_unmarried = view.findViewById(R.id.et_number_of_brothers_unmarried);
+                et_number_of_sisters_unmarried = view.findViewById(R.id.et_number_of_sisters_unmarried);
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ur,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray array = new JSONArray(response);
+                                    for (int i = 0; i<array.length(); i++){
+                                        JSONObject object = array.getJSONObject(i);
+                                        et_origin_of_family.setText(object.getString("origin_family"));
+                                        et_number_of_brothers.setText(object.getString("brothers"));
+                                        et_number_of_sisters.setText(object.getString("sisters"));
+                                        et_number_of_brothers_married.setText(object.getString("brothers_married"));
+                                        et_number_of_sisters_married.setText(object.getString("sisters_married"));
+                                        et_number_of_brothers_unmarried.setText(object.getString("brothers_unmarried"));
+                                        et_number_of_sisters_unmarried.setText(object.getString("sisters_unmarried"));
+                                    }
+                                }catch (Exception e){
+                                    System.out.println("here exception==>"+e.getMessage());
+                                }
+//                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
+//                        recyclerView.setAdapter(mAdapter);
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("pid", pid);
+                        return params;
+
+                    }
+                };
+
+                Volley.newRequestQueue(BookDetailsActivity.this).add(stringRequest);
+
 
             }
             if(position==5)
             {
-//                bt=view.findViewById(R.id.bt);
-//                System.out.println("here="+booknm);
-//                tvchoose=view.findViewById(R.id.tvchoose);
-//                btnchoose=view.findViewById(R.id.btnchoose);
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        uploadretrofit(strnm);
-//                        Toast.makeText(BookDetailsActivity.this, "Book Uploaded", Toast.LENGTH_SHORT).show();
-//                        Intent i=new Intent(getApplicationContext(),AllBooks.class);
-//                        startActivity(i);
-//
-//
-//                    }
-//                });
-//                btnchoose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        Intent choosefile = new Intent(Intent.ACTION_GET_CONTENT);
-//                        choosefile.setType("application/pdf");
-//                        choosefile = Intent.createChooser(choosefile, "Choose a file");
-//                        startActivityForResult(choosefile, 21);
-//                        bt.setVisibility(View.VISIBLE);
-//                    }
-//                });
+                TextView et_hobbies,et_manglik,et_required_education,et_age_group_preference,et_required_height,et_required_weight;
+                et_hobbies = view.findViewById(R.id.et_hobbies);
+                et_manglik = view.findViewById(R.id.et_manglik);
+                et_required_education = view.findViewById(R.id.et_required_education);
+                et_age_group_preference = view.findViewById(R.id.et_age_group_preference);
+                et_required_height = view.findViewById(R.id.et_required_height);
+                et_required_weight = view.findViewById(R.id.et_required_weight);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ur,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray array = new JSONArray(response);
+                                    for (int i = 0; i<array.length(); i++){
+                                        JSONObject object = array.getJSONObject(i);
+                                        et_hobbies.setText(object.getString("hobbies"));
+                                        et_manglik.setText(object.getString("manglik"));
+                                        et_required_education.setText(object.getString("required_education"));
+                                        et_age_group_preference.setText(object.getString("origin_family"));
+                                        et_required_height.setText(object.getString("age_group"));
+//                                        et_required_weight.setText(object.getString("origin_family"));
+
+
+                                    }
+                                }catch (Exception e){
+                                    System.out.println("here exception==>"+e.getMessage());
+                                }
+//                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
+//                        recyclerView.setAdapter(mAdapter);
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("pid", pid);
+                        return params;
+
+                    }
+                };
+
+                Volley.newRequestQueue(BookDetailsActivity.this).add(stringRequest);
+
 
             }
             if(position==6)
             {
-//                bt=view.findViewById(R.id.bt);
-//                System.out.println("here="+booknm);
-//                tvchoose=view.findViewById(R.id.tvchoose);
-//                btnchoose=view.findViewById(R.id.btnchoose);
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        uploadretrofit(strnm);
-//                        Toast.makeText(BookDetailsActivity.this, "Book Uploaded", Toast.LENGTH_SHORT).show();
-//                        Intent i=new Intent(getApplicationContext(),AllBooks.class);
-//                        startActivity(i);
-//
-//
-//                    }
-//                });
-//                btnchoose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        Intent choosefile = new Intent(Intent.ACTION_GET_CONTENT);
-//                        choosefile.setType("application/pdf");
-//                        choosefile = Intent.createChooser(choosefile, "Choose a file");
-//                        startActivityForResult(choosefile, 21);
-//                        bt.setVisibility(View.VISIBLE);
-//                    }
-//                });
+                TextView et_email_address,et_mobile_number,et_landline_number,et_residence_number,et_address_line1,et_address_line2;
+                et_email_address = view.findViewById(R.id.et_email_address);
+                et_mobile_number = view.findViewById(R.id.et_mobile_number);
+                et_landline_number = view.findViewById(R.id.et_landline_number);
+                et_residence_number = view.findViewById(R.id.et_residence_number);
+                et_address_line1 = view.findViewById(R.id.et_address_line1);
+                et_address_line2 = view.findViewById(R.id.et_address_line2);
+
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ur,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray array = new JSONArray(response);
+                                    for (int i = 0; i<array.length(); i++){
+                                        JSONObject object = array.getJSONObject(i);
+                                        et_email_address.setText(object.getString("mail_id"));
+                                        et_mobile_number.setText(object.getString("mobile_number"));
+                                        et_landline_number.setText(object.getString("land_line"));
+                                        et_residence_number.setText(object.getString("resi_number"));
+                                        et_address_line1.setText(object.getString("address1"));
+                                        et_address_line2.setText(object.getString("address2"));
+
+
+                                    }
+                                }catch (Exception e){
+                                    System.out.println("here exception==>"+e.getMessage());
+                                }
+//                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
+//                        recyclerView.setAdapter(mAdapter);
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("pid", pid);
+                        return params;
+
+                    }
+                };
+
+                Volley.newRequestQueue(BookDetailsActivity.this).add(stringRequest);
+
 
             }
             return view;

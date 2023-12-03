@@ -1,30 +1,43 @@
 package com.example.bookbub;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.provider.MediaStore;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,18 +50,32 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.slider.RangeSlider;
+import com.google.android.material.slider.Slider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
+import static android.app.Activity.RESULT_OK;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,6 +84,7 @@ import java.util.Random;
  */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
     Button btn_register;
+    Uri filePath;
     EditText mobno,edname,edpasswd;
     String name,no,passwd;
     private TextView[] dots;
@@ -65,17 +93,41 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private ViewPager viewPager;
     private LinearLayout dotsLayout;
     private Button btnSkip, btnNext;
+    Spinner et_gender,et_profile_status;
+    Button displayDate,btn_aadhar_pan;
+    private NumberPicker picker1;
+    private Bitmap bitmap,bitmap_aadhar,bitmap_edu_quali,bitmap_income_proof,bitmap_proof_2000
+            ;
+    ImageView aadhar_pan,proof_2000,income_proof,edu_quali;
     private RegisterFragment.MyViewPagerAdapter myViewPagerAdapter;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     char[] otp;
 
+    String[] gender_items = {"Male", "Female", "NA"};
+    String [] profile_status_items={"Single","Engaged","Divorcee"};
+    String [] spectacles_items={"No","Yes"};
+    String [] complex_items={"Fair","Very Fair","Weatish","Dark"};
     private String mParam1;
     private String mParam2;
-
+Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
+    ImageView book_img;
+    EditText et_first_name,et_middle_name,et_last_name,et_place_of_birth,et_edu,et_occ,et_income,et_origin_of_family, et_hobbies,et_required_education,et_email_address,et_mobile_number,et_landline_number,et_residence_number,et_address_line1,et_address_line2;
+    ;
     public RegisterFragment() {
     }
+    private Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("https://docs.google.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    String first_name, middle_name, last_name, gender, dob, place_of_birth, profile_image, height, str_weight, complexion, str_spectacles, physial_handicap, education, occupation, income, origin_of_family, no_of_brothers, no_of_sisters, no_of_brothers_married, no_of_sisters_married, no_of_brothers_unmarried, no_of_sisters_unmarried, hobbies, manglik, required_education_of_partner, age_group_preference_for_partner, required_height_of_partner, required_weight_of_partner, email_address, mobile_number, landline_number, residence_number, address_line_1, address_line_2, aadhar_card_or_pan_card, latest_education_qualification, string_income_proof, fee_submitted_2000_proof,profile_status;
+    {
+        first_name = middle_name = last_name = gender = dob = place_of_birth = profile_image = height = str_weight = complexion = str_spectacles = physial_handicap = education = occupation = income = origin_of_family = no_of_brothers = no_of_sisters = no_of_brothers_married = no_of_sisters_married = no_of_brothers_unmarried = no_of_sisters_unmarried = hobbies = manglik = required_education_of_partner = age_group_preference_for_partner = required_height_of_partner = required_weight_of_partner = email_address = mobile_number = landline_number = residence_number = address_line_1 = address_line_2 = aadhar_card_or_pan_card = latest_education_qualification = string_income_proof = fee_submitted_2000_proof =profile_status= "";
+    }
+    private GoogleFormService api = retrofit.create(GoogleFormService.class);
+
+
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
@@ -88,43 +140,20 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 btnSkip.setVisibility(View.GONE);
             } else
             {
-                // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
             }
+            if(position!=0)
+            {
+            }
+
             if (position == 2) {
-//                tvname = findViewById(R.id.name);
-//                tvdesc = findViewById(R.id.desc);
-//                strname = tvname.getText().toString();
-//                System.out.println("thaii=="+strname);
-//                SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
-//
-//                SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//
-//                myEdit.putString("name", strname);
-//
-//                myEdit.commit();
-//                booknm=strname;
-//                strdesc = tvdesc.getText().toString();
             }
             if(position == 0)
             {
 
             }
             if (position == 3) {
-
-//                LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                // View v=inflater.inflate(R.layout.make_cover,null,false);
-                //Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-                //Canvas c = new Canvas(b);
-                // if(strname!=null)Toast.makeText(NewActivity.this, "val=="+strname, Toast.LENGTH_SHORT).show();
-                /// v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
-                // bn.setText(tvname.getText().toString());
-                //d.setText(tvdesc.getText().toString());
-                //v.draw(c);
-
-                //book_img.setImageBitmap(b);
-
 
 
             }
@@ -156,6 +185,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+
     private void addBottomDots(int currentPage)
     {
         dots = new TextView[layouts.length];
@@ -173,23 +203,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
     private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
+        return viewPager.getCurrentItem() ;
     }
-    //    private void launchHomeScreen() {
-//       // prefManager.setFirstTimeLaunch(false);
-//        startActivity(new Intent(NewActivity.this, NewActivity.class));
-//        finish();
-//    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static RegisterFragment newInstance(String param1, String param2) {
         RegisterFragment fragment = new RegisterFragment();
         Bundle args = new Bundle();
@@ -212,13 +227,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_register
                 ,container,false);
-        System.out.println("ghgh");
         viewPager = (ViewPager) v.findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) v.findViewById(R.id.layoutDots);
         btnSkip = (Button) v.findViewById(R.id.btn_skip);
+
         btnNext = (Button) v.findViewById(R.id.btn_next);
         layouts = new int[]{
                 R.layout.publish_book_pg2_new,
@@ -226,24 +240,21 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 R.layout.publish_book_pg4_new,
                 R.layout.publish_book_pg5_new,
                 R.layout.publish_book_pg3_new,
-                R.layout.publish_book_pg6_new, R.layout.publish_book_pg7_new};
+                R.layout.publish_book_pg6_new, R.layout.publish_book_pg7_new,
+                R.layout.publish_book_pg8_new,
+                R.layout.publish_book_pg9_new,
+                R.layout.publish_book_pg10_new,
+                R.layout.publish_book_pg11_new};
 
         addBottomDots(0);
         changeStatusBarColor();
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
+        viewPager.setOffscreenPageLimit(layouts.length - 1);
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // launchHomeScreen();
-//                if (v == buttonChoose) {
-////                    showFileChooser();
-//                }
-//
-//                if(v == buttonUpload){
-//                }
 
             }
         });
@@ -255,76 +266,20 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 }
-//                else {
-//                    launchHomeScreen();
-//                }
             }
         });
 
         viewGroup = v.findViewById(android.R.id.content);
-//        btn_register.setOnClickListener(this);
         return v;
-        //return inflater.inflate(R.layout.fragment_register, container, false);
     }
     @Override
     public void onClick(View view) {
-
     registerUser();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //OTP
-//        Random random = new Random();
-//        otp = new char[4];
-//        for (int i=0; i<4; i++)
-//        {
-//            otp[i]= (char)(random.nextInt(10)+48);
-//        }
-//
-////        Toast.makeText(getApplicationContext(), String.valueOf(otp), Toast.LENGTH_SHORT).show();
-//
-//        String number  = mobno.getText().toString();
-//
-//        if(!(mobno.getText().toString().equals(""))) {
-//            Toast.makeText(getContext(), "un1", Toast.LENGTH_SHORT).show();
-//            new MyAsyncTask(view).execute("https://api.msg91.com/api/sendhttp.php?route=4&sender=TESTIN&message=OTP for your OTP Verification App is : "+String.valueOf(otp)+"&country=91&flash=&unicode=&mobiles="+number+"&authkey=297116AFCGQdLuvdm25d96f3f7");
-//        }else{
-//            Toast.makeText(getContext(), "un2", Toast.LENGTH_SHORT).show();
-//
-//            mobno.setError("Please Enter your mobile number");
-//        }
-
     }
     public class MyViewPagerAdapter extends PagerAdapter {
+
+
+
         private LayoutInflater layoutInflater;
         public MyViewPagerAdapter() {
         }
@@ -332,6 +287,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         public void startUpdate(@NonNull ViewGroup container) {
             super.startUpdate(container);
         }
+        @SuppressLint("WrongViewCast")
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             layoutInflater = (LayoutInflater)  getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -340,6 +296,95 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             container.addView(view);
             if(position == 0)
             {
+                et_first_name= view.findViewById(R.id.et_first_name);
+                first_name=et_first_name.getText().toString();
+                et_middle_name= view.findViewById(R.id.et_middle_name);
+                middle_name=et_middle_name.getText().toString();
+                et_last_name=view.findViewById(R.id.et_last_name);
+                last_name=et_last_name.getText().toString();
+                et_place_of_birth=view.findViewById(R.id.et_place_of_birth);
+                place_of_birth=et_place_of_birth.getText().toString();
+                et_gender =(Spinner) view.findViewById(R.id.et_gender);
+                if(et_gender.getSelectedItem()!=null)
+                gender=et_gender.getSelectedItem().toString();
+//                instantiatePersonal();
+
+//                picker=(Button)view.findViewById(R.id.et_dob);
+                displayDate=(Button)view.findViewById(R.id.button1);
+
+                et_profile_status=(Spinner) view.findViewById(R.id.et_profile_status);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender_items);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                et_gender.setAdapter(adapter);
+
+                et_gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        String selectedValue = gender_items[position];
+                        // Do something with the selected value
+                        gender= et_gender.getItemAtPosition(position).toString();
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                    }
+                });
+
+                ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, profile_status_items);
+                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                et_profile_status.setAdapter(adapter2);
+                et_profile_status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        String selectedValue = gender_items[position];
+                        profile_status= et_profile_status.getItemAtPosition(position).toString();
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // Do nothing here
+                    }
+                });
+
+
+
+                displayDate.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+
+                        final Calendar c = Calendar.getInstance();
+
+                        // on below line we are getting
+                        // our day, month and year.
+                        int year = c.get(Calendar.YEAR);
+                        int month = c.get(Calendar.MONTH);
+                        int day = c.get(Calendar.DAY_OF_MONTH);
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                                // on below line we are passing context.
+                                getContext(),
+                                new DatePickerDialog.OnDateSetListener() {
+                                    @Override
+                                    public void onDateSet(DatePicker view, int year,
+                                                          int monthOfYear, int dayOfMonth) {
+                                        // on below line we are setting date to our text view.
+                                        displayDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                                    }
+                                },
+                                // on below line we are passing year,
+                                // month and day for selected date in our date picker.
+                                year, month, day);
+                        // at last we are calling show to
+                        // display our date picker dialog.
+                        datePickerDialog.show();
+
+                    }
+
+                });
 
                 //   Toast.makeText(NewActivity.this, "opopopopopooooo1", Toast.LENGTH_SHORT).show();
 //                profile_image=view.findViewById(R.id.profile_image);
@@ -347,327 +392,425 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                         .placeholder(R.drawable.bookcover2)
                         .error(R.drawable.bookcover2);
 
-//                Glide.with(RegisterFragment.this.getContext()).load(path).apply(options).into(profile_image);
-
-//                profile_image.se
-//                english=view.findViewById(R.id.english);
-//                gujarati=view.findViewById(R.id.gujarati);
-//                tamil=view.findViewById(R.id.tamil);
-//                cardhindi=view.findViewById(R.id.cardhindi);
-//                cardenglish=view.findViewById(R.id.cardenglish);
-//                cardgujarati=view.findViewById(R.id.cardgujarati);
-//                cardtamil=view.findViewById(R.id.cardtamil);
-
-
-//                cardhindi.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        hindi.setTextColor(getResources().getColor(R.color.white));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                        gujarati.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.white));
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                    }
-//                });
-//                cardenglish.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        english.setTextColor(getResources().getColor(R.color.white));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        gujarati.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.white));
-//                        hindi.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.white));
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                        //selected="english";
-//                    }
-//                });
-//                cardgujarati.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        gujarati.setTextColor(getResources().getColor(R.color.white));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        //selected="english";
-//                        hindi.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.white));
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                    }
-//                });
-//                cardtamil.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        tamil.setTextColor(getResources().getColor(R.color.white));
-//                        cardtamil.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        english.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardenglish.setBackgroundColor(getResources().getColor(R.color.white));
-//                        gujarati.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardgujarati.setBackgroundColor(getResources().getColor(R.color.white));
-//                        hindi.setTextColor(getResources().getColor(R.color.startblue));
-//                        cardhindi.setBackgroundColor(getResources().getColor(R.color.white));
-//                        //selected="english";
-//                    }
-//                });
-//
-//
-//
-//
-//
-//                TextView txt_choose=view.findViewById(R.id.txt_choose);
-//                txt_choose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                    }
-//                });
             }
             if(position == 1)
             {
-                TextView txt_choose=view.findViewById(R.id.txt_choose);
-//                TextView scifi,horror,comedy,study;
-//                scifi=view.findViewById(R.id.scifi);
-//                horror=view.findViewById(R.id.horror);
-//                comedy=view.findViewById(R.id.comedy);
-//                study=view.findViewById(R.id.study);
-//                cardscifi=view.findViewById(R.id.cardscifi);
-//                cardhorror=view.findViewById(R.id.cardcomedy);
-////                cardstudy=view.findViewById(R.id.cardstudy);ew.findViewById(R.id.cardhorror);
-//                cardcomedy=vi
-                txt_choose.setOnClickListener(new View.OnClickListener() {
+                btn_login =(Button) view.findViewById(R.id.btn_login);
+                book_img=(ImageView) view.findViewById(R.id.profile_image);
+
+                btn_login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        selectImage(1);
                     }
                 });
-
-//
-//                cardhorror.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        horror.setTextColor(getResources().getColor(R.color.white));
-//                        cardhorror.setBackgroundColor(getResources().getColor(R.color.startblue));
-//
-//                    }
-//                });
-//                cardcomedy.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        comedy.setTextColor(getResources().getColor(R.color.white));
-//                        cardcomedy.setBackgroundColor(getResources().getColor(R.color.startblue));
-//
-//                        //selected="english";
-//                    }
-//                });
-//                cardstudy.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        study.setTextColor(getResources().getColor(R.color.white));
-//                        cardstudy.setBackgroundColor(getResources().getColor(R.color.startblue));
-//                        //selected="english";
-//                    }
-//                });
-//                cardscifi.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        scifi.setTextColor(getResources().getColor(R.color.white));
-//                        cardscifi.setBackgroundColor(getResources().getColor(R.color.startblue));
-//
-//                        //selected="english";
-//                    }
-//                });
-//
-
-
-
+                book_img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(1);
+                    }
+                });
             }
             if(position == 2)
             {
-//                tvname=findViewById(R.id.name);
-//                tvdesc=findViewById(R.id.desc);
-//                tvname.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        strnm=tvname.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
+                NumberPicker feetPicker = view.findViewById(R.id.et_height_feet);
+                NumberPicker inchPicker = view.findViewById(R.id.et_height_inch);
+                Spinner complex=view.findViewById(R.id.et_complexion);
+                Spinner spectacles=view.findViewById(R.id.et_spectacles);
+                Spinner phyical=view.findViewById(R.id.et_physical_handicap);
 
-            }
+                Slider weight = view.findViewById(R.id.et_weight);
+                weight.setValueFrom(0);
+                weight.setValueTo(300);
+                weight.setStepSize(1);
 
-            if(position==3){
-//                View v2=layoutInflater.inflate(R.layout.make_cover,null,false);
-//                bookname=v2.findViewById(R.id.bookname);
-//                desc=v2.findViewById(R.id.desc);
-//                authorname=v2.findViewById(R.id.authorname);
-//                bookname.setText(strname);
-//                desc.setText(strdesc);
-//                btn_login= view.findViewById(R.id.btn_login);
-//                btn_login.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        // uploadImage();
-//                        //  uploadretrofit();
-//                        selectImage();
-//                    }
-//                });
-//                authorname.setText("Peehu");
-////                book_img=view.findViewById(R.id.book_img);
-//                rv=v2.findViewById(R.id.rv);
-//                book_img.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        selectImage();
-//                    }
-//                });
-//                View v=layoutInflater.inflate(R.layout.make_cover,null,false);
-//                TextView bn=v.findViewById(R.id.bookname);
-//                TextView d=v.findViewById(R.id.desc);
-//                if(strname!=null)Toast.makeText(NewActivity.this, "val=="+strname, Toast.LENGTH_SHORT).show();
-//                v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
-//               // bn.setText(tvname.getText().toString());
-//                //d.setText(tvdesc.getText().toString());
-//                Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-//                Canvas c = new Canvas(b);
-//                v.draw(c);
-            }
-            if(position==4)
-            {
-//                bt=view.findViewById(R.id.bt);
-//                System.out.println("here="+booknm);
-//                tvchoose=view.findViewById(R.id.tvchoose);
-//                btnchoose=view.findViewById(R.id.btnchoose);
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        uploadretrofit(strnm);
-//                        Toast.makeText(BookDetailsActivity.this, "Book Uploaded", Toast.LENGTH_SHORT).show();
-//                        Intent i=new Intent(getApplicationContext(),AllBooks.class);
-//                        startActivity(i);
-//
-//
-//                    }
-//                });
-//                btnchoose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        Intent choosefile = new Intent(Intent.ACTION_GET_CONTENT);
-//                        choosefile.setType("application/pdf");
-//                        choosefile = Intent.createChooser(choosefile, "Choose a file");
-//                        startActivityForResult(choosefile, 21);
-//                        bt.setVisibility(View.VISIBLE);
-//                    }
-//                });
 
-            }
-            if(position==5)
-            {
-//                bt=view.findViewById(R.id.bt);
-//                System.out.println("here="+booknm);
-//                tvchoose=view.findViewById(R.id.tvchoose);
-//                btnchoose=view.findViewById(R.id.btnchoose);
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        uploadretrofit(strnm);
-//                        Toast.makeText(BookDetailsActivity.this, "Book Uploaded", Toast.LENGTH_SHORT).show();
-//                        Intent i=new Intent(getApplicationContext(),AllBooks.class);
-//                        startActivity(i);
-//
-//
-//                    }
-//                });
-//                btnchoose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        Intent choosefile = new Intent(Intent.ACTION_GET_CONTENT);
-//                        choosefile.setType("application/pdf");
-//                        choosefile = Intent.createChooser(choosefile, "Choose a file");
-//                        startActivityForResult(choosefile, 21);
-//                        bt.setVisibility(View.VISIBLE);
-//                    }
-//                });
+                feetPicker.setMinValue(0);
+                feetPicker.setMaxValue(10);
 
-            }
-            if(position==6)
-            {
-                btn_register=view.findViewById(R.id.btn_register);
-                btn_register.setOnClickListener(new View.OnClickListener() {
+                inchPicker.setMinValue(0);
+                inchPicker.setMaxValue(11); // 0 to 11 inches
+                feetPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                     @Override
-                    public void onClick(View view) {
-
-
+                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                        height =feetPicker.getValue()+"'"+" ";
+                    }
+                });
+                inchPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                        height+=inchPicker.getValue()+"''";
+                    }
+                });
+                weight.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        str_weight =slider.getValue()+" kgs";
 
                     }
                 });
-//                System.out.println("here="+booknm);
-//                tvchoose=view.findViewById(R.id.tvchoose);
-//                btnchoose=view.findViewById(R.id.btnchoose);
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        uploadretrofit(strnm);
-//                        Toast.makeText(BookDetailsActivity.this, "Book Uploaded", Toast.LENGTH_SHORT).show();
-//                        Intent i=new Intent(getApplicationContext(),AllBooks.class);
-//                        startActivity(i);
-//
-//
-//                    }
-//                });
-//                btnchoose.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        Intent choosefile = new Intent(Intent.ACTION_GET_CONTENT);
-//                        choosefile.setType("application/pdf");
-//                        choosefile = Intent.createChooser(choosefile, "Choose a file");
-//                        startActivityForResult(choosefile, 21);
-//                        bt.setVisibility(View.VISIBLE);
-//                    }
-//                });
+
+
+                ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, complex_items);
+                adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                complex.setAdapter(adapter3);
+
+                complex.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        String selectedValue = complex_items[position];
+                        String data= complex.getItemAtPosition(position).toString();
+                        complexion=selectedValue;
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                    }
+                });
+
+                ArrayAdapter<String> adapter4 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, spectacles_items);
+                adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                spectacles.setAdapter(adapter4);
+
+                spectacles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        String selectedValue = spectacles_items[position];
+                        String data= spectacles.getItemAtPosition(position).toString();
+                        str_spectacles=selectedValue;
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // Do nothing here
+                    }
+                });
+
+
+                ArrayAdapter<String> adapter5 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, spectacles_items);
+                adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                phyical.setAdapter(adapter5);
+
+                phyical.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        String selectedValue = spectacles_items[position];
+                        // Do something with the selected value
+                        String data= phyical.getItemAtPosition(position).toString();
+                        physial_handicap=selectedValue;
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // Do nothing here
+                    }
+                });
 
             }
+            if(position==3)
+            {
+                et_edu=view.findViewById(R.id.et_edu);
+                et_occ=view.findViewById(R.id.et_occ);
+                et_income=view.findViewById(R.id.et_income);
+                education=et_edu.getText().toString();
+                occupation=et_occ.getText().toString();
+                income=et_income.getText().toString();
+
+            }
+            if(position==4)
+            {
+                et_origin_of_family= view.findViewById(R.id.et_origin_of_family);
+
+                Slider et_number_of_brothers = view.findViewById(R.id.et_number_of_brothers);
+                et_number_of_brothers.setValueFrom(0);
+                et_number_of_brothers.setValueTo(20);
+                et_number_of_brothers.setStepSize(1);
+
+                Slider et_number_of_sisters = view.findViewById(R.id.et_number_of_sisters);
+                et_number_of_sisters.setValueFrom(0);
+                et_number_of_sisters.setValueTo(20);
+                et_number_of_sisters.setStepSize(1);
+
+                Slider et_number_of_sisters_married = view.findViewById(R.id.et_number_of_sisters_married);
+                et_number_of_sisters_married.setValueFrom(0);
+                et_number_of_sisters_married.setValueTo(20);
+                et_number_of_sisters_married.setStepSize(1);
+
+                Slider et_number_of_brothers_married = view.findViewById(R.id.et_number_of_brothers_married);
+                et_number_of_brothers_married.setValueFrom(0);
+                et_number_of_brothers_married.setValueTo(20);
+                et_number_of_brothers_married.setStepSize(1);
+
+                Slider et_number_of_sisters_unmarried = view.findViewById(R.id.et_number_of_sisters_unmarried);
+                et_number_of_sisters_unmarried.setValueFrom(0);
+                et_number_of_sisters_unmarried.setValueTo(20);
+                et_number_of_sisters_unmarried.setStepSize(1);
+
+                Slider et_number_of_brothers_unmarried = view.findViewById(R.id.et_number_of_brothers_unmarried);
+                et_number_of_brothers_unmarried.setValueFrom(0);
+                et_number_of_brothers_unmarried.setValueTo(20);
+                et_number_of_brothers_unmarried.setStepSize(1);
+                et_number_of_brothers.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        no_of_brothers=String.valueOf(slider.getValue());
+
+                    }
+                });
+                et_number_of_sisters.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        no_of_sisters=String.valueOf(slider.getValue());
+
+                    }
+                });
+                et_number_of_brothers_married.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        no_of_brothers_married=String.valueOf(slider.getValue());
+
+                    }
+                });
+                et_number_of_brothers_unmarried.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        no_of_brothers_unmarried=String.valueOf(slider.getValue());
+
+                    }
+                });
+                et_number_of_sisters_married.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        no_of_sisters_married=String.valueOf(slider.getValue());
+
+                    }
+                });
+                et_number_of_sisters_unmarried.addOnChangeListener(new Slider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                        no_of_sisters_unmarried=String.valueOf(slider.getValue());
+
+                    }
+                });
+
+
+
+                origin_of_family=et_origin_of_family.getText().toString();
+
+            }
+            if(position==5)
+            {et_hobbies= view.findViewById(R.id.et_hobbies);
+                et_required_education=view.findViewById(R.id.et_required_education);
+                    Spinner et_manglik = view.findViewById(R.id.et_manglik);
+                    NumberPicker feetPickerMin=view.findViewById(R.id.feetPickerMin);
+                NumberPicker inchPickerMin=view.findViewById(R.id.inchPickerMin);
+                NumberPicker feetPickerMax=view.findViewById(R.id.feetPickerMax);
+                NumberPicker inchPickerMax=view.findViewById(R.id.inchPickerMax);
+                RangeSlider et_age_grp=view.findViewById(R.id.et_age_group_preference);
+                et_age_grp.addOnChangeListener(new RangeSlider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
+                        age_group_preference_for_partner=slider.getValues().get(0)+" to " +slider.getValues().get(1);
+
+                    }
+                });
+
+                hobbies=et_hobbies.getText().toString();
+                required_education_of_partner=et_required_education.getText().toString();
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, spectacles_items);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                inchPickerMin.setMinValue(0);
+                inchPickerMin.setMaxValue(11);
+                inchPickerMax.setMinValue(0);
+                inchPickerMax.setMaxValue(11);
+                feetPickerMin.setMinValue(0);
+                feetPickerMin.setMaxValue(10);
+                feetPickerMax.setMinValue(0);
+                feetPickerMax.setMaxValue(10);
+                et_manglik.setAdapter(adapter);
+
+                et_manglik.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        String selectedValue = spectacles_items[position];
+                        String data= et_manglik.getItemAtPosition(position).toString();
+                        manglik=selectedValue;
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                    }
+                });
+                feetPickerMin.setOnScrollListener(new NumberPicker.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChange(NumberPicker picker, int scrollState) {
+                        if (scrollState == NumberPicker.OnScrollListener.SCROLL_STATE_IDLE) {
+                            // The user has stopped scrolling, handle the selected value
+                            required_height_of_partner=String.valueOf(picker.getValue())+"'";
+                        }
+                    }
+                });
+                inchPickerMin.setOnScrollListener(new NumberPicker.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChange(NumberPicker picker, int scrollState) {
+                        if (scrollState == NumberPicker.OnScrollListener.SCROLL_STATE_IDLE) {
+                            // The user has stopped scrolling, handle the selected value
+                            required_height_of_partner+=String.valueOf(picker.getValue())+"''"+" to ";
+                        }
+                    }
+                });
+
+                feetPickerMax.setOnScrollListener(new NumberPicker.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChange(NumberPicker picker, int scrollState) {
+                        if (scrollState == NumberPicker.OnScrollListener.SCROLL_STATE_IDLE) {
+                            // The user has stopped scrolling, handle the selected value
+                            required_height_of_partner+=String.valueOf(picker.getValue())+"'";
+                        }
+                    }
+                });
+                inchPickerMax.setOnScrollListener(new NumberPicker.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChange(NumberPicker picker, int scrollState) {
+                        if (scrollState == NumberPicker.OnScrollListener.SCROLL_STATE_IDLE) {
+                            // The user has stopped scrolling, handle the selected value
+                            required_height_of_partner+=String.valueOf(picker.getValue())+"''";
+                        }
+                    }
+                });
+
+
+
+                RangeSlider et_required_weight=view.findViewById(R.id.et_required_weight);
+                et_required_weight.addOnChangeListener(new RangeSlider.OnChangeListener() {
+                    @Override
+                    public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
+                        required_weight_of_partner=slider.getValues().get(0)+" to "+slider.getValues().get(1);
+                    }
+                });
+
+            }
+
+            if(position==6)
+            {
+                et_email_address=view.findViewById(R.id.et_email_address);
+                et_mobile_number=view.findViewById(R.id.et_mobile_number);
+                et_landline_number=view.findViewById(R.id.et_landline_number);
+                et_residence_number=view.findViewById(R.id.et_residence_number);
+                et_address_line1=view.findViewById(R.id.et_address_line1);
+                et_address_line2=view.findViewById(R.id.et_address_line2);
+                email_address=et_email_address.getText().toString();
+                mobile_number=et_mobile_number.getText().toString();
+                landline_number=et_landline_number.getText().toString();
+                residence_number=et_residence_number.getText().toString();
+                address_line_1=et_address_line1.getText().toString();
+                address_line_2=et_address_line2.getText().toString();
+
+
+
+            }
+
+            if(position==7)
+            {
+                btn_aadhar_pan =(Button) view.findViewById(R.id.btn_aadhar_pan);
+                aadhar_pan=(ImageView) view.findViewById(R.id.aadhar_pan);
+
+                btn_aadhar_pan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(2);
+                    }
+                });
+                aadhar_pan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(2);
+                    }
+                });
+
+
+            }
+
+            if(position==8)
+            {
+                btn_edu_quali =(Button) view.findViewById(R.id.btn_edu_quali);
+                edu_quali=(ImageView) view.findViewById(R.id.edu_quali);
+
+                btn_aadhar_pan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(3);
+                    }
+                });
+                edu_quali.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(3);
+                    }
+                });
+
+
+
+            }
+
+            if(position==9)
+            {
+                btn_income_proof =(Button) view.findViewById(R.id.btn_income_proof);
+                income_proof=(ImageView) view.findViewById(R.id.income_proof);
+
+                btn_income_proof.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(4);
+                    }
+                });
+                income_proof.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(4);
+                    }
+                });
+
+
+
+            }
+
+            if(position==10)
+            {
+                btn_register=(Button) view.findViewById(R.id.btn_register);
+                btn_proof_2000 =(Button) view.findViewById(R.id.btn_proof_2000);
+                proof_2000=(ImageView) view.findViewById(R.id.proof_2000);
+                btn_register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        registerUser();
+                    }
+                });
+                btn_proof_2000.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(5);
+                    }
+                });
+                proof_2000.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectImage(5);
+                    }
+                });
+
+
+            }
+
             return view;
         }
-//        private void uploadPdfToServer()
-//        {
-//            retrofit2.Call<ResponsePOJO> call = RetrofitClient.getInstance().getAPI().uploadDocument(encodedpdf);
-//            call.enqueue(new retrofit2.Callback<ResponsePOJO>() {
-//                @Override
-//                public void onResponse( retrofit2.Call<ResponsePOJO> call, retrofit2.Response<ResponsePOJO> response) {
-//
-//                    Toast.makeText(RegisterFragment.this.getContext(), response.body().getRemarks(), Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onFailure( retrofit2.Call<ResponsePOJO> call, Throwable t) {
-//                    Toast.makeText(RegisterFragment.this.getContext(), "Network Failed", Toast.LENGTH_SHORT).show();
-//
-//                }
-//            });
-////            Toast.makeText(NewActivity.this, "upppppp", Toast.LENGTH_SHORT).show();
-//        }
 
         @Override
         public int getCount() {
@@ -684,64 +827,114 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             View view = (View) object;
             container.removeView(view);
         }
+
+        @Override
+        public void notifyDataSetChanged() {
+            super.notifyDataSetChanged();
+        }
+    }
+
+
+    private String convertToString()
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap_aadhar.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap_edu_quali.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap_income_proof.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap_proof_2000.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+
+        byte[] imgByte = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imgByte,Base64.DEFAULT);
+    }
+    private void selectImage(int requestCode) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, requestCode);
     }
 
     private void registerUser() {
-        name=edname.getText().toString();
-        no=mobno.getText().toString();
-        passwd=edpasswd.getText().toString();
-        String regurl="https://myimon.000webhostapp.com/register_book_user.php";
+
+
+
+
+
+
+
+
+//        name=edname.getText().toString();
+//        no=mobno.getText().toString();
+//        passwd=edpasswd.getText().toString();
+        String regurl="https://pbmabad.000webhostapp.com/InsertIntoPendingTable.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, regurl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response)
                     {
-                       // progressBar.setVisibility(View.GONE);
-                        try {
-                            //converting response to json object
-                            JSONObject obj = new JSONObject(response);
-                            //if no error in response
-                            if (!obj.getBoolean("error")) {
-                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                                //getting the user from the response
-                                JSONObject userJson = obj.getJSONObject("user");
-                                //creating a new user object
-                                User user = new User(
-                                        userJson.getString("no"),
-                                        userJson.getString("passwd"),
-                                        userJson.getString("name"),0,0
-                                );
-                                if(response=="1") {
-                                    Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i=new Intent(getActivity(),NewActivity.class);
-                                    startActivity(i);
-                                }
-                                //storing the user in shared preferences
-                                SharedPrefManager.getInstance(getContext()).userLogin(user);
-
-                                //starting the profile activity
-                                getActivity().finish();
-                                startActivity(new Intent(getContext(), MainActivity.class));
+                        try{
+                            if(response.equals("Data inserted successfully!"))
+                            {
+                                Toast.makeText(getContext(),"We will get back to you to confirm your registration",Toast.LENGTH_LONG).show();
                             }
-                        } catch (Exception e)
+                            else{
+                                Toast.makeText(getContext(),"Internal Server Error",Toast.LENGTH_LONG).show();
+
+                            }
+                        }catch(Exception e)
                         {
-                            System.out.println("error---"+e.getMessage());
-                           // Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("name", name);
-                params.put("no", no);
-                params.put("passwd", passwd);
+                params.put("first_name", et_first_name.getText().toString());
+                params.put("middle_name",et_middle_name.getText().toString());
+                params.put("last_name", et_last_name.getText().toString());
+                String cgender=(et_gender.getSelectedItem()!=null)?et_gender.getSelectedItem().toString():"";
+                params.put("gender", cgender);
+                params.put("dob", displayDate.getText().toString());
+                params.put("place_of_birth", et_place_of_birth.getText().toString());
+                params.put("profile_image", "https://pbmabad.000webhostapp.com/imgs/boys.png");
+                params.put("height", height);
+                params.put("weight", str_weight);
+                params.put("complexion", complexion);
+                params.put("spectacles", str_spectacles);
+                params.put("physial_handicap", physial_handicap);
+                params.put("education", et_edu.getText().toString());
+                params.put("occupation", et_occ.getText().toString());
+                params.put("income", et_income.getText().toString());
+                params.put("origin_of_family", et_origin_of_family.getText().toString());
+                params.put("no_of_brothers", no_of_brothers);
+                params.put("no_of_sisters", no_of_sisters);
+                params.put("no_of_brothers_married", no_of_brothers_married);
+                params.put("no_of_sisters_married", no_of_sisters_married);
+                params.put("no_of_brothers_unmarried", no_of_brothers_unmarried);
+                params.put("no_of_sisters_unmarried", no_of_sisters_unmarried);
+                params.put("hobbies", et_hobbies.getText().toString());
+                params.put("manglik", manglik);
+                params.put("required_education_of_partner", et_required_education.getText().toString());
+                params.put("age_group_preference_for_partner", age_group_preference_for_partner);
+                params.put("required_height_of_partner", required_height_of_partner);
+                params.put("required_weight_of_partner", required_weight_of_partner);
+                params.put("email_address", et_email_address.getText().toString());
+                params.put("mobile_number", et_mobile_number.getText().toString());
+                params.put("landline_number", et_landline_number.getText().toString());
+                params.put("residence_number", et_residence_number.getText().toString());
+                params.put("address_line_1", et_address_line1.getText().toString());
+                params.put("address_line_2", et_address_line2.getText().toString());
+                params.put("aadhar_card_or_pan_card", "https://pbmabad.000webhostapp.com/imgs/boys.png");
+                params.put("latest_education_qualification", "https://pbmabad.000webhostapp.com/imgs/boys.png");
+                params.put("income_proof", "https://pbmabad.000webhostapp.com/imgs/boys.png");
+                params.put("fee_submitted_2000_proof", "https://pbmabad.000webhostapp.com/imgs/boys.png");
+                params.put("profile_status", profile_status);
+
                 return params;
             }
         };
@@ -793,5 +986,94 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         }else{
             otp_text.setError("Please Enter OTP First!");
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        //  if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if(requestCode== 1 && resultCode==RESULT_OK && data!=null)
+        {
+            Uri path = data.getData();
+
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getApplicationContext().getContentResolver(),path);
+
+                book_img.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                System.out.println("err=="+e.getMessage());
+            }
+        }
+        if(requestCode== 2 && resultCode==RESULT_OK && data!=null){
+            Uri path = data.getData();
+            try {
+                bitmap_aadhar = MediaStore.Images.Media.getBitmap(getActivity().getApplicationContext().getContentResolver(),path);
+
+                aadhar_pan.setImageBitmap(bitmap_aadhar);
+        } catch (IOException e) {
+        System.out.println("err=="+e.getMessage());
+    }
+        }
+        if(requestCode==3 && resultCode==RESULT_OK && data!=null){
+            Uri path = data.getData();
+
+            try {
+                bitmap_edu_quali = MediaStore.Images.Media.getBitmap(getActivity().getApplicationContext().getContentResolver(),path);
+                edu_quali.setImageBitmap(bitmap_edu_quali);
+    } catch (IOException e) {
+        System.out.println("err=="+e.getMessage());
+    }
+
+        }
+        if(requestCode==4 && resultCode==RESULT_OK && data!=null){
+            Uri path = data.getData();
+
+            try {
+
+                bitmap_income_proof = MediaStore.Images.Media.getBitmap(getActivity().getApplicationContext().getContentResolver(),path);
+
+                income_proof.setImageBitmap(bitmap_income_proof);
+                } catch (IOException e) {
+                System.out.println("err=="+e.getMessage());
+                }
+
+        }
+        if(requestCode==5 && resultCode==RESULT_OK && data!=null){
+            Uri path = data.getData();
+
+            try {
+
+                bitmap_proof_2000 = MediaStore.Images.Media.getBitmap(getActivity().getApplicationContext().getContentResolver(),path);
+                proof_2000.setImageBitmap(bitmap_proof_2000);
+                } catch (IOException e) {
+                System.out.println("err=="+e.getMessage());
+                }
+
+        }
+        filePath = data.getData();
+
+
+
+//        viewPager.setOnPageChangeListener(mPageChangeListener);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+        {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+            @Override
+            public void onPageSelected(int position) {
+
+//                instantiatePersonal();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }

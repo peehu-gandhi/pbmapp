@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Image"
+            android:fontFamily="@font/bon"
+            android:gravity="center"
+            android:textColor="@color/my_blue"
+            android:textSize="18sp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_choose"
+            android:text="Publish books in your language"
+            android:textColor="@color/my_blue"
+            android:textSize="12sp"></TextView>
+    </RelativeLayout>
+
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="235dp"
+            android:layout_height="388dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            android:layout_gravity="center"
+            app:cardElevation="8dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/aadhar_pan"
+                android:layout_height="456dp"></ImageView>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btn_aadhar_pan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edpasswd"
+            android:background="@color/startblue"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@android:color/white"
+            android:text="Upload your own book cover"/>
+
+    </LinearLayout>
+</LinearLayout>

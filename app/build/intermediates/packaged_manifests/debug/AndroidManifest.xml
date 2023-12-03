@@ -28,14 +28,18 @@
         <activity
             android:name="com.example.bookbub.LoginAndRegister"
             android:exported="true" >
+        </activity>
+        <activity android:name="com.example.bookbub.BookDetailsActivity" >
+        </activity>
+        <activity
+            android:name="com.example.bookbub.AllBooks"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.bookbub.BookDetailsActivity" />
-        <activity android:name="com.example.bookbub.AllBooks" />
         <activity android:name="com.example.bookbub.UserProfileFragment" />
         <activity android:name="com.example.bookbub.MyBooksActivity" />
         <activity

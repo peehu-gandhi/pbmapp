@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -68,7 +69,7 @@
                         android:textStyle="bold" />
 
                     <!-- Field Value -->
-                    <TextView
+                    <EditText
                         android:id="@+id/et_hobbies"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -86,7 +87,7 @@
                         android:textStyle="bold" />
 
                     <!-- Field Value -->
-                    <TextView
+                    <Spinner
                         android:id="@+id/et_manglik"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -104,7 +105,7 @@
                         android:textStyle="bold" />
 
                     <!-- Field Value -->
-                    <TextView
+                    <EditText
                         android:id="@+id/et_required_education"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -122,12 +123,14 @@
                         android:textStyle="bold" />
 
                     <!-- Field Value -->
-                    <TextView
+                    <com.google.android.material.slider.RangeSlider
                         android:id="@+id/et_age_group_preference"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="25-30 years"
-                        android:textSize="16sp"
+                        android:stepSize="1"
+                        android:valueFrom="1"
+                        android:valueTo="100"
+                        app:values="@array/default_age_range"
                         android:layout_marginBottom="16dp" />
 
                     <!-- Required Height of Partner -->
@@ -140,13 +143,76 @@
                         android:textStyle="bold" />
 
                     <!-- Field Value -->
-                    <TextView
-                        android:id="@+id/et_required_height"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="5'6 - 6'0\"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:orientation="horizontal">
+
+                        <NumberPicker
+                            android:id="@+id/feetPickerMin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            tools:ignore="MissingPrefix" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="'"
+                            android:layout_gravity="center_vertical"/>
+
+                        <NumberPicker
+                            android:id="@+id/inchPickerMin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="''"
+                            android:layout_gravity="center_vertical"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" to "
+                            android:layout_gravity="center_vertical"/>
+
+                        <NumberPicker
+                            android:id="@+id/feetPickerMax"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+
+                           />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="'"
+                            android:layout_gravity="center_vertical"/>
+
+                        <NumberPicker
+                            android:id="@+id/inchPickerMax"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="''"
+                            android:layout_gravity="center_vertical"/>
+
+                    </LinearLayout>
+
 
                     <!-- Required Weight of Partner -->
                     <TextView
@@ -158,11 +224,13 @@
                         android:textStyle="bold" />
 
                     <!-- Field Value -->
-                    <TextView
+                    <com.google.android.material.slider.RangeSlider
                         android:id="@+id/et_required_weight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="140 lbs - 180 lbs"
+                        android:stepSize="1"
+                        android:valueFrom="1"
+                        android:valueTo="300"
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

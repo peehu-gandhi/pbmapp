@@ -7,7 +7,24 @@ com/example/bookbub/BookDetailsActivity.java
  com.example.bookbub.BookDetailsActivity$5
  com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter
  com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$1
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$10
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$11
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$12
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$13
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$14
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$15
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$16
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$17
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$18
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$19
  com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$2
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$3
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$4
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$5
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$6
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$7
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$8
+ com.example.bookbub.BookDetailsActivity$MyViewPagerAdapter$9
 com/example/bookbub/MyBooksActivity.java
  com.example.bookbub.MyBooksActivity
  com.example.bookbub.MyBooksActivity$1
@@ -22,14 +39,50 @@ com/example/bookbub/RegisterFragment.java
  com.example.bookbub.RegisterFragment$4
  com.example.bookbub.RegisterFragment$5
  com.example.bookbub.RegisterFragment$6
+ com.example.bookbub.RegisterFragment$7
  com.example.bookbub.RegisterFragment$MyAsyncTask
  com.example.bookbub.RegisterFragment$MyViewPagerAdapter
  com.example.bookbub.RegisterFragment$MyViewPagerAdapter$1
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$10
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$11
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$12
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$13
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$14
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$15
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$16
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$17
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$18
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$19
  com.example.bookbub.RegisterFragment$MyViewPagerAdapter$2
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$20
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$21
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$22
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$23
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$24
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$25
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$26
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$27
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$28
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$29
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$3
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$3$1
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$30
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$31
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$32
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$33
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$4
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$5
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$6
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$7
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$8
+ com.example.bookbub.RegisterFragment$MyViewPagerAdapter$9
 com/example/bookbub/Album.java
  com.example.bookbub.Album
 com/example/bookbub/BookCallback.java
  com.example.bookbub.BookCallback
+com/example/bookbub/GoogleFormService.java
+ com.example.bookbub.FormData
+ com.example.bookbub.GoogleFormService
 com/example/bookbub/VolleyCallback.java
  com.example.bookbub.VolleyCallback
 com/example/bookbub/ApiClient.java

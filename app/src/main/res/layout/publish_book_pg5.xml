@@ -53,7 +53,7 @@
 
             <!-- Field Value -->
             <TextView
-                android:id="@+id/et_height"
+                android:id="@+id/et_edu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="MCA"
@@ -71,7 +71,7 @@
 
             <!-- Field Value -->
             <TextView
-                android:id="@+id/et_weight"
+                android:id="@+id/et_occ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ful time"
@@ -89,7 +89,7 @@
 
             <!-- Field Value -->
             <TextView
-                android:id="@+id/et_complexion"
+                android:id="@+id/et_income"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="100000 P.M."

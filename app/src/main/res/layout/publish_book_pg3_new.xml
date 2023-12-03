@@ -61,11 +61,10 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <EditText
                     android:id="@+id/et_origin_of_family"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="New York"
                     android:textSize="16sp"
                     android:layout_marginBottom="16dp" />
 
@@ -79,12 +78,10 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <com.google.android.material.slider.Slider
                     android:id="@+id/et_number_of_brothers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2"
-                    android:textSize="16sp"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Number of Sisters -->
@@ -97,7 +94,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <com.google.android.material.slider.Slider
                     android:id="@+id/et_number_of_sisters"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -115,7 +112,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <com.google.android.material.slider.Slider
                     android:id="@+id/et_number_of_brothers_married"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,7 +130,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <com.google.android.material.slider.Slider
                     android:id="@+id/et_number_of_sisters_married"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,7 +148,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <com.google.android.material.slider.Slider
                     android:id="@+id/et_number_of_brothers_unmarried"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,7 +166,7 @@
                     android:textStyle="bold" />
 
                 <!-- Field Value -->
-                <TextView
+                <com.google.android.material.slider.Slider
                     android:id="@+id/et_number_of_sisters_unmarried"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

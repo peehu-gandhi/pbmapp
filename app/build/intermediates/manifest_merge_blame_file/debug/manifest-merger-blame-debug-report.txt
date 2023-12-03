@@ -15,7 +15,7 @@
 11-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:7:5-37:19
+13-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:7:5-41:19
 14        android:allowBackup="true"
 14-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -42,72 +42,77 @@
 26-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:16:50-73
 27        </activity>
 28        <activity
-28-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:18:9-24:20
+28-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:18:9-20:20
 29            android:name="com.example.bookbub.LoginAndRegister"
 29-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:18:19-51
 30            android:exported="true" >
 30-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:18:52-75
-31            <intent-filter>
-31-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:19:13-23:29
-32                <action android:name="android.intent.action.MAIN" />
-32-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:20:17-69
-32-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:20:25-66
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:22:17-77
-34-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:22:27-74
-35            </intent-filter>
-36        </activity>
-37        <activity android:name="com.example.bookbub.BookDetailsActivity" />
-37-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:25:9-57
-37-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:25:19-54
-38        <activity android:name="com.example.bookbub.AllBooks" />
-38-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:26:9-46
-38-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:26:19-43
-39        <activity android:name="com.example.bookbub.UserProfileFragment" />
-39-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:27:9-57
-39-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:27:19-54
-40        <activity android:name="com.example.bookbub.MyBooksActivity" />
-40-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:29:9-53
-40-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:29:19-50
-41        <activity
-41-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:30:9-32:73
-42            android:name="com.example.bookbub.AddBookActivity"
-42-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:31:13-44
-43            android:theme="@style/Theme.BookBub.NoActionBar" />
-43-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:32:13-61
-44        <activity android:name="com.example.bookbub.NewActivity" />
-44-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:33:9-58
-44-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:33:19-46
-45        <activity android:name="com.example.bookbub.ActivityOne" />
-45-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:34:9-49
-45-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:34:19-46
-46        <activity android:name="com.example.bookbub.MainActivity" >
-46-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:35:9-36:20
-46-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:35:19-47
-47        </activity>
-48
-49        <provider
-49-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
-50            android:name="androidx.startup.InitializationProvider"
-50-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
-51            android:authorities="com.example.bookbub.androidx-startup"
-51-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
-52            android:exported="false" >
-52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
-53            <meta-data
-53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
-54                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
-55                android:value="androidx.startup" />
-55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
-56            <meta-data
-56-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\336367916adc8311afb7ae7d42fe4bb0\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
-57                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-57-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\336367916adc8311afb7ae7d42fe4bb0\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
-58                android:value="androidx.startup" />
-58-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\336367916adc8311afb7ae7d42fe4bb0\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
-59        </provider>
-60    </application>
-61
-62</manifest>
+31        </activity>
+32        <activity android:name="com.example.bookbub.BookDetailsActivity" >
+32-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:21:9-23:20
+32-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:21:19-54
+33        </activity>
+34        <activity
+34-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:24:9-30:20
+35            android:name="com.example.bookbub.AllBooks"
+35-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:24:19-43
+36            android:exported="true" >
+36-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:24:44-67
+37            <intent-filter>
+37-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:25:13-29:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:26:17-69
+38-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:26:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:28:17-77
+40-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:28:27-74
+41            </intent-filter>
+42        </activity>
+43        <activity android:name="com.example.bookbub.UserProfileFragment" />
+43-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:31:9-57
+43-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:31:19-54
+44        <activity android:name="com.example.bookbub.MyBooksActivity" />
+44-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:33:9-53
+44-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:33:19-50
+45        <activity
+45-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:34:9-36:73
+46            android:name="com.example.bookbub.AddBookActivity"
+46-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:35:13-44
+47            android:theme="@style/Theme.BookBub.NoActionBar" />
+47-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:36:13-61
+48        <activity android:name="com.example.bookbub.NewActivity" />
+48-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:37:9-58
+48-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:37:19-46
+49        <activity android:name="com.example.bookbub.ActivityOne" />
+49-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:38:9-49
+49-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:38:19-46
+50        <activity android:name="com.example.bookbub.MainActivity" >
+50-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:39:9-40:20
+50-->D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:39:19-47
+51        </activity>
+52
+53        <provider
+53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+54            android:name="androidx.startup.InitializationProvider"
+54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+55            android:authorities="com.example.bookbub.androidx-startup"
+55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+56            android:exported="false" >
+56-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+57            <meta-data
+57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+58                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+58-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+59                android:value="androidx.startup" />
+59-->[androidx.emoji2:emoji2:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\873fae0beeff47808d46bd64157b4d70\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+60            <meta-data
+60-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\336367916adc8311afb7ae7d42fe4bb0\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+61                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+61-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\336367916adc8311afb7ae7d42fe4bb0\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+62                android:value="androidx.startup" />
+62-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\336367916adc8311afb7ae7d42fe4bb0\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+63        </provider>
+64    </application>
+65
+66</manifest>

@@ -68,8 +68,6 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // inside on query text change method we are
-                // calling a method to filter our recycler view.
                 filter(newText);
                 return false;
             }
@@ -94,8 +92,6 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
         }
         if (filteredlist.isEmpty()) {
         } else {
-            // at last we are passing that filtered
-            // list to our adapter class.
             bookAdapter.filterList(filteredlist);
         }
     }
@@ -123,34 +119,12 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
                     JSONObject all_recievers = obj.getJSONObject("all_recievers");
                     String allCompanionsString=     (String) all_recievers.get("all_recievers");
                     System.out.println("allCompanionsString==>"+allCompanionsString);
-//                    if(allCompanionsString!=null)
-//                    {
-//                        String[] allCompanions = allCompanionsString.split("\\|");
-////                        System.out.println("comps==>"+b.getLast_name());
-////                        for (String companion : allCompanions) {
-////                            if (b.getPid().equals(companion)) {
-////                                holder.imgFav.setImageResource(R.drawable.btn_custom);
-////                            }
-////                        }
-////                    if (companion.equals(keyToFind)) {
-////                        containsKey = true;
-////                        break; // Exit the loop as soon as the key is found
-////                    }
-//                    }
                     loadBooks(allCompanionsString);
 
                 } catch (JSONException e) {
                    System.out.println("exception e==>"+e.getMessage());
 
                 }
-
-                //creating a new user object
-//
-//                                        System.out.println("all_recievers=="+all_recievers.get("all_recievers"));
-
-
-
-
             }
 
             @Override
@@ -158,19 +132,6 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
 
             }
         });
-
-
-
-//
-//
-//
-//
-//        mdata.add(new Book(R.drawable.bookcover));
-//        mdata.add(new Book(R.drawable.bookcover));
-//        mdata.add(new Book(R.drawable.bookcover));
-//        mdata.add(new Book(R.drawable.bookcover));
-//        mdata.add(new Book(R.drawable.bookcover));
-//        mdata.add(new Book(R.drawable.bookcover));
     }
     private void allCompanions(final VolleyCallback callback) {
         String urllogin="https://pbmabad.000webhostapp.com/Php_IsCompanion.php";
@@ -316,7 +277,9 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
         // create intent and send book object to Details activity
         Intent intent = new Intent(this,BookDetailsActivity.class);
         intent.putExtra("physical_path",mdata.get(pos).getPhysicalpath());
-       // Pair<View,String> p1 = Pair.create((View)imgContainer,"containerTN"); // second arg is the tansition string Name
+        intent.putExtra("pid",mdata.get(pos).getPid());
+
+        // Pair<View,String> p1 = Pair.create((View)imgContainer,"containerTN"); // second arg is the tansition string Name
         Pair<View,String> p2 = Pair.create((View)imgBook,"bookTN"); // second arg is the tansition string Name
         Pair<View,String> p3 = Pair.create((View)title,"booktitleTN"); // second arg is the tansition string Name
 //        Pair<View,String> p4 = Pair.create((View)authorName,"authorTN"); // second arg is the tansition string Name
