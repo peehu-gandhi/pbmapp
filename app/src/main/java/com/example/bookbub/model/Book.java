@@ -23,6 +23,7 @@ public class Book implements Serializable {
     }
 
     String companions;
+    private int originalPosition; // add this field
 
     public String getPid() {
         return profile_id;
@@ -46,7 +47,7 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(String profile_id,String first_name, String middle_name, String last_name, String gender, String mobile_number, String profile_status, String manglik, String occupation, String income, String physicalpath, String origin_family,String companions,String exixtingCompanions) {
+    public Book(String profile_id,String first_name, String middle_name, String last_name, String gender, String mobile_number, String profile_status, String manglik, String occupation, String income, String physicalpath, String origin_family,String companions,String exixtingCompanions,int originalPosition) {
         this.exixtingCompanions=exixtingCompanions;
         this.companions=companions;
         this.first_name = first_name;
@@ -61,6 +62,7 @@ public class Book implements Serializable {
         this.income = income;
         this.physicalpath = physicalpath;
         this.origin_family = origin_family;
+        this.originalPosition=originalPosition;
     }
 
     public String getFirst_name() {
@@ -149,5 +151,12 @@ public class Book implements Serializable {
 
     public void setOrigin_family(String origin_family) {
         this.origin_family = origin_family;
+    }
+    public int getOriginalPosition() {
+        return originalPosition;
+    }
+
+    public void setOriginalPosition(int originalPosition) {
+        this.originalPosition = originalPosition;
     }
 }

@@ -127,6 +127,8 @@ public class BookDetailsActivity extends AppCompatActivity {
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
+        btnSkip.setVisibility(View.GONE);
+
         layouts = new int[]{
                 R.layout.publish_book_pg1,
                 R.layout.publish_book_pg2,
@@ -159,6 +161,22 @@ public class BookDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int current = getItem(+1);
+                if (current < layouts.length) {
+                    // move to next screen
+                    viewPager.setCurrentItem(current);
+                    viewPager.getAdapter().notifyDataSetChanged();
+
+                }
+//                else {
+//                    launchHomeScreen();
+//                }
+            }
+        });
+
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int current = getItem(-1);
                 if (current < layouts.length) {
                     // move to next screen
                     viewPager.setCurrentItem(current);
@@ -213,13 +231,13 @@ public class BookDetailsActivity extends AppCompatActivity {
     }
 
 
-
     private void showFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
+
     private String convertToString()
     {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -261,12 +279,14 @@ public class BookDetailsActivity extends AppCompatActivity {
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
                 btnNext.setVisibility(View.GONE);
-                btnSkip.setVisibility(View.GONE);
-            } else
+            }
+            else
             {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
+                btnNext.setVisibility(View.VISIBLE);
+
             }
             if (position == 2) {
 //                tvname = findViewById(R.id.name);
@@ -285,6 +305,7 @@ public class BookDetailsActivity extends AppCompatActivity {
             }
             if(position == 0)
             {
+                btnSkip.setVisibility(View.GONE);
 
             }
             if (position == 3) {
@@ -694,6 +715,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onResponse( retrofit2.Call<ResponsePOJO> call, Response<ResponsePOJO> response) {
 
+
                     Toast.makeText(BookDetailsActivity.this, response.body().getRemarks(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -723,44 +745,44 @@ public class BookDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadretrofit(String strnm) {
-
-        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-
-        String image = convertToString();
-
-// Retrieving the value using its keys the file name
-// must be same in both saving and retrieving the data
-        @SuppressLint("WrongConstant") SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-// The value will be default as empty string because for
-// the very first time when the app is opened, there is nothing to show
-        String nm = sh.getString("name", "");
-
-
-
-        retrofit2.Call<Img_Pojo> call = apiInterface.uploadImage(strnm,image,strnm,"peehu"+strnm,"90","Hindi",
-
-                "study" ,"900",encodedpdf);
-        call.enqueue(new Callback<Img_Pojo>() {
-            @Override
-            public void onResponse(Call<Img_Pojo> call, Response<Img_Pojo> response) {
-
-                Img_Pojo img_pojo = response.body();
-                Toast.makeText(BookDetailsActivity.this, img_pojo.getResponse(), Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onFailure(Call<Img_Pojo> call, Throwable t) {
-                Log.d("Server Response",""+t.toString());
-
-
-            }
-        });
-
-
-    }
+//    private void uploadretrofit(String strnm) {
+//
+//        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+//
+//        String image = convertToString();
+//
+//// Retrieving the value using its keys the file name
+//// must be same in both saving and retrieving the data
+//        @SuppressLint("WrongConstant") SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+//
+//// The value will be default as empty string because for
+//// the very first time when the app is opened, there is nothing to show
+//        String nm = sh.getString("name", "");
+//
+//
+//
+//        retrofit2.Call<Img_Pojo> call = apiInterface.uploadImage(strnm,image,strnm,"peehu"+strnm,"90","Hindi",
+//
+//                "study" ,"900",encodedpdf);
+//        call.enqueue(new Callback<Img_Pojo>() {
+//            @Override
+//            public void onResponse(Call<Img_Pojo> call, Response<Img_Pojo> response) {
+//
+//                Img_Pojo img_pojo = response.body();
+//                Toast.makeText(BookDetailsActivity.this, img_pojo.getResponse(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Img_Pojo> call, Throwable t) {
+//                Log.d("Server Response",""+t.toString());
+//
+//
+//            }
+//        });
+//
+//
+//    }
 //
 //    private String getBookName() {
 //

@@ -7,6 +7,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RegisterFragment">
+    <TextView
+        android:id="@+id/tv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/indigo_daisy"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="25dp"
+        android:textColor="#2052e8" />
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dedicated to Social Welfare Of Society.\nFill the form and confirm your candidature."
+        android:textSize="17sp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+    android:layout_marginLeft="25dp"
+    android:textColor="#555555" />
 
 
     <LinearLayout
@@ -20,13 +44,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="640dp"
+        android:layout_height="wrap_content"
         tools:showIn="@layout/fragment_register">
+
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="80dp"
+            />
 
 
         <Button
@@ -46,7 +73,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:background="@null"
-            android:text="@string/skip"
+            android:text="BACK"
             android:textColor="@android:color/white" />
     </RelativeLayout>
 

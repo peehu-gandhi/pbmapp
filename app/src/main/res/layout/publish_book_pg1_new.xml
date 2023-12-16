@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f2f2f2"
+    android:orientation="vertical" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -26,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Publish books in your language"
+            android:text="Please upload your profile picture."
             android:textColor="@color/my_blue"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
@@ -40,23 +46,38 @@
         android:layout_gravity="center"
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
-            android:layout_width="235dp"
-            android:layout_height="388dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
             android:layout_gravity="center"
-            app:cardElevation="8dp">
+          >
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/your_outer_frame_drawable">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:id="@+id/profile_image"
-            android:layout_height="456dp"></ImageView>
+            <!-- Inner frame for the image -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/your_inner_frame_drawable">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="241dp"
+                    android:layout_height="245dp"></ImageView>
+            </FrameLayout>
+            </FrameLayout>
         </androidx.cardview.widget.CardView>
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,11 +85,13 @@
             android:background="@color/startblue"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
+            android:drawableLeft="@android:drawable/ic_menu_gallery"
             android:layout_marginRight="20dp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@android:color/white"
-            android:text="Upload your own book cover"/>
+            android:text="Upload from Gallery"/>
 
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

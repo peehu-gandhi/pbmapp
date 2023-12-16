@@ -18,18 +18,19 @@
             android:text="PROFILE IMAGE"
             android:textColor="@color/white"
             android:textSize="18sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Publish books in your language"
+            android:text='"We help to build happiness" - Punjab Biradari'
             android:textColor="@color/white"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
 
     <androidx.legacy.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="35dp" />
+        android:layout_height="16dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

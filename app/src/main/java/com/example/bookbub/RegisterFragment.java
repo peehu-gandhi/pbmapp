@@ -3,6 +3,7 @@ package com.example.bookbub;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -24,6 +26,7 @@ import android.provider.MediaStore;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +68,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import retrofit2.Call;
@@ -76,15 +80,10 @@ import retrofit2.http.POST;
 
 import static android.app.Activity.RESULT_OK;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RegisterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
-    Button btn_register;
+    AppCompatButton btn_register;
     Uri filePath;
+    String strnm="new";
     EditText mobno,edname,edpasswd;
     String name,no,passwd;
     private TextView[] dots;
@@ -94,16 +93,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private LinearLayout dotsLayout;
     private Button btnSkip, btnNext;
     Spinner et_gender,et_profile_status;
-    Button displayDate,btn_aadhar_pan;
+    AppCompatButton displayDate,btn_aadhar_pan;
     private NumberPicker picker1;
     private Bitmap bitmap,bitmap_aadhar,bitmap_edu_quali,bitmap_income_proof,bitmap_proof_2000
             ;
     ImageView aadhar_pan,proof_2000,income_proof,edu_quali;
-    private RegisterFragment.MyViewPagerAdapter myViewPagerAdapter;
+    private MyViewPagerAdapter myViewPagerAdapter;
+        String regurl="https://pbmabad.000webhostapp.com/InsertIntoPendingTable.php";
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     char[] otp;
+    public static final String UPLOAD_KEY = "image";
+    private ViewPager.OnPageChangeListener mPageChangeListener;
 
     String[] gender_items = {"Male", "Female", "NA"};
     String [] profile_status_items={"Single","Engaged","Divorcee"};
@@ -111,8 +113,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     String [] complex_items={"Fair","Very Fair","Weatish","Dark"};
     private String mParam1;
     private String mParam2;
-Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
-    ImageView book_img;
+    AppCompatButton  btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
+    ImageView book_img=null;
     EditText et_first_name,et_middle_name,et_last_name,et_place_of_birth,et_edu,et_occ,et_income,et_origin_of_family, et_hobbies,et_required_education,et_email_address,et_mobile_number,et_landline_number,et_residence_number,et_address_line1,et_address_line2;
     ;
     public RegisterFragment() {
@@ -137,20 +139,23 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
                 btnNext.setVisibility(View.GONE);
-                btnSkip.setVisibility(View.GONE);
             } else
             {
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
+                btnNext.setVisibility(View.VISIBLE);
+
             }
             if(position!=0)
             {
+
             }
 
             if (position == 2) {
             }
             if(position == 0)
             {
+                btnSkip.setVisibility(View.GONE);
 
             }
             if (position == 3) {
@@ -203,7 +208,7 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
     private int getItem(int i) {
-        return viewPager.getCurrentItem() ;
+        return viewPager.getCurrentItem()+i ;
     }
     public static RegisterFragment newInstance(String param1, String param2) {
         RegisterFragment fragment = new RegisterFragment();
@@ -232,6 +237,7 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
         viewPager = (ViewPager) v.findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) v.findViewById(R.id.layoutDots);
         btnSkip = (Button) v.findViewById(R.id.btn_skip);
+        btnSkip.setVisibility(View.GONE);
 
         btnNext = (Button) v.findViewById(R.id.btn_next);
         layouts = new int[]{
@@ -252,19 +258,31 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
         viewPager.setOffscreenPageLimit(layouts.length - 1);
+
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v2) {
+            getActivity();
+                int current = getItem(-1);
 
+                if (current < layouts.length) {
+                    // move to next screen
+                    System.out.println("cc=="+myViewPagerAdapter);
+
+                    viewPager.setCurrentItem(current);
+                }
             }
         });
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v2) {
                 int current = getItem(+1);
                 if (current < layouts.length) {
                     // move to next screen
                     viewPager.setCurrentItem(current);
+                    viewPager.getAdapter().notifyDataSetChanged();
+
+
                 }
             }
         });
@@ -274,7 +292,39 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
     }
     @Override
     public void onClick(View view) {
-    registerUser();
+        uploadretrofit(strnm);
+        registerUser();
+    }
+
+    private void uploadretrofit(String strnm) {
+
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+
+        String image = convertToString();
+
+
+        retrofit2.Call<Img_Pojo> call = apiInterface.uploadImage(strnm,image,strnm,"peehu"+strnm,"90","Hindi",
+
+                "study" ,"900");
+        call.enqueue(new Callback<Img_Pojo>() {
+
+
+            @Override
+            public void onResponse(Call<Img_Pojo> call, retrofit2.Response<Img_Pojo> response) {
+                Img_Pojo img_pojo = response.body();
+                Toast.makeText(getContext(), img_pojo.getResponse(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<Img_Pojo> call, Throwable t) {
+                System.out.println("Server Response"+t.toString());
+
+
+            }
+        });
+
+
     }
     public class MyViewPagerAdapter extends PagerAdapter {
 
@@ -310,7 +360,7 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
 //                instantiatePersonal();
 
 //                picker=(Button)view.findViewById(R.id.et_dob);
-                displayDate=(Button)view.findViewById(R.id.button1);
+                displayDate=(AppCompatButton)view.findViewById(R.id.button1);
 
                 et_profile_status=(Spinner) view.findViewById(R.id.et_profile_status);
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender_items);
@@ -324,6 +374,17 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
                         String selectedValue = gender_items[position];
                         // Do something with the selected value
                         gender= et_gender.getItemAtPosition(position).toString();
+                        if(book_img!=null)
+                        {
+                            if ("Female".equals(gender))
+                            {
+                                book_img.setImageResource(R.drawable.female_img);
+                            }
+                            else{
+                                book_img.setImageResource(R.drawable.male_img);
+
+                            }
+                        }
 
                     }
 
@@ -395,9 +456,18 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
             }
             if(position == 1)
             {
-                btn_login =(Button) view.findViewById(R.id.btn_login);
+                btn_login =(AppCompatButton) view.findViewById(R.id.btn_login);
                 book_img=(ImageView) view.findViewById(R.id.profile_image);
-
+                String ccgender=(et_gender.getSelectedItem()!=null)?et_gender.getSelectedItem().toString():"";
+                System.out.println("gender==>"+ccgender);
+//                if ("Female".equals(ccgender))
+//                {
+//                    book_img.setImageResource(R.drawable.female_img);
+//                }
+//                else{
+//                    book_img.setImageResource(R.drawable.male_img);
+//
+//                }
                 btn_login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -692,7 +762,15 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
                 et_required_weight.addOnChangeListener(new RangeSlider.OnChangeListener() {
                     @Override
                     public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
-                        required_weight_of_partner=slider.getValues().get(0)+" to "+slider.getValues().get(1);
+                        //required_weight_of_partner=slider.getValues().get(0)+" to "+slider.getValues().get(1);
+                        List<Float> values = slider.getValues();
+                        if (values.size() == 2) {
+                            required_weight_of_partner = values.get(0) + " to " + values.get(1);
+                        } else {
+                            // Handle the case where the size is not as expected
+                           System.out.println("sii==="+values.size());
+                        }
+
                     }
                 });
 
@@ -719,8 +797,10 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
 
             if(position==7)
             {
-                btn_aadhar_pan =(Button) view.findViewById(R.id.btn_aadhar_pan);
+
+                btn_aadhar_pan =(AppCompatButton) view.findViewById(R.id.btn_aadhar_pan);
                 aadhar_pan=(ImageView) view.findViewById(R.id.aadhar_pan);
+                 aadhar_pan.setImageResource(R.drawable.aadhar_pan);
 
                 btn_aadhar_pan.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -740,8 +820,9 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
 
             if(position==8)
             {
-                btn_edu_quali =(Button) view.findViewById(R.id.btn_edu_quali);
+                btn_edu_quali =(AppCompatButton ) view.findViewById(R.id.btn_edu_quali);
                 edu_quali=(ImageView) view.findViewById(R.id.edu_quali);
+                edu_quali.setImageResource(R.drawable.degree);
 
                 btn_aadhar_pan.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -762,8 +843,9 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
 
             if(position==9)
             {
-                btn_income_proof =(Button) view.findViewById(R.id.btn_income_proof);
+                btn_income_proof =(AppCompatButton ) view.findViewById(R.id.btn_income_proof);
                 income_proof=(ImageView) view.findViewById(R.id.income_proof);
+                income_proof.setImageResource(R.drawable.incomepr);
 
                 btn_income_proof.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -784,13 +866,18 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
 
             if(position==10)
             {
-                btn_register=(Button) view.findViewById(R.id.btn_register);
-                btn_proof_2000 =(Button) view.findViewById(R.id.btn_proof_2000);
+                btn_register=(AppCompatButton) view.findViewById(R.id.btn_register);
+                btn_proof_2000 =(AppCompatButton ) view.findViewById(R.id.btn_proof_2000);
+
                 proof_2000=(ImageView) view.findViewById(R.id.proof_2000);
+                proof_2000.setImageResource(R.drawable.upi);
+
                 btn_register.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         registerUser();
+                        Intent i=new Intent(getContext(),LoginAndRegister.class);
+                        getActivity().startActivity(i);
                     }
                 });
                 btn_proof_2000.setOnClickListener(new View.OnClickListener() {
@@ -828,10 +915,10 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
             container.removeView(view);
         }
 
-        @Override
-        public void notifyDataSetChanged() {
-            super.notifyDataSetChanged();
-        }
+//        @Override
+//        public void notifyDataSetChanged() {
+//            super.notifyDataSetChanged();
+//        }
     }
 
 
@@ -853,92 +940,113 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, requestCode);
     }
+    public String getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
+    private void uploadImage(){
+        class UploadImage extends AsyncTask<Bitmap,Void,String>{
 
-    private void registerUser() {
+            ProgressDialog loading;
+            RequestHandler rh = new RequestHandler();
 
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(getContext(), "Registering...", null,true,true);
+            }
 
-
-
-
-
-
-
-//        name=edname.getText().toString();
-//        no=mobno.getText().toString();
-//        passwd=edpasswd.getText().toString();
-        String regurl="https://pbmabad.000webhostapp.com/InsertIntoPendingTable.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, regurl,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        try{
-                            if(response.equals("Data inserted successfully!"))
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                if(s.equals("Data inserted successfully!"))
                             {
                                 Toast.makeText(getContext(),"We will get back to you to confirm your registration",Toast.LENGTH_LONG).show();
                             }
-                            else{
-                                Toast.makeText(getContext(),"Internal Server Error",Toast.LENGTH_LONG).show();
-
-                            }
-                        }catch(Exception e)
-                        {
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("first_name", et_first_name.getText().toString());
-                params.put("middle_name",et_middle_name.getText().toString());
-                params.put("last_name", et_last_name.getText().toString());
-                String cgender=(et_gender.getSelectedItem()!=null)?et_gender.getSelectedItem().toString():"";
-                params.put("gender", cgender);
-                params.put("dob", displayDate.getText().toString());
-                params.put("place_of_birth", et_place_of_birth.getText().toString());
-                params.put("profile_image", "https://pbmabad.000webhostapp.com/imgs/boys.png");
-                params.put("height", height);
-                params.put("weight", str_weight);
-                params.put("complexion", complexion);
-                params.put("spectacles", str_spectacles);
-                params.put("physial_handicap", physial_handicap);
-                params.put("education", et_edu.getText().toString());
-                params.put("occupation", et_occ.getText().toString());
-                params.put("income", et_income.getText().toString());
-                params.put("origin_of_family", et_origin_of_family.getText().toString());
-                params.put("no_of_brothers", no_of_brothers);
-                params.put("no_of_sisters", no_of_sisters);
-                params.put("no_of_brothers_married", no_of_brothers_married);
-                params.put("no_of_sisters_married", no_of_sisters_married);
-                params.put("no_of_brothers_unmarried", no_of_brothers_unmarried);
-                params.put("no_of_sisters_unmarried", no_of_sisters_unmarried);
-                params.put("hobbies", et_hobbies.getText().toString());
-                params.put("manglik", manglik);
-                params.put("required_education_of_partner", et_required_education.getText().toString());
-                params.put("age_group_preference_for_partner", age_group_preference_for_partner);
-                params.put("required_height_of_partner", required_height_of_partner);
-                params.put("required_weight_of_partner", required_weight_of_partner);
-                params.put("email_address", et_email_address.getText().toString());
-                params.put("mobile_number", et_mobile_number.getText().toString());
-                params.put("landline_number", et_landline_number.getText().toString());
-                params.put("residence_number", et_residence_number.getText().toString());
-                params.put("address_line_1", et_address_line1.getText().toString());
-                params.put("address_line_2", et_address_line2.getText().toString());
-                params.put("aadhar_card_or_pan_card", "https://pbmabad.000webhostapp.com/imgs/boys.png");
-                params.put("latest_education_qualification", "https://pbmabad.000webhostapp.com/imgs/boys.png");
-                params.put("income_proof", "https://pbmabad.000webhostapp.com/imgs/boys.png");
-                params.put("fee_submitted_2000_proof", "https://pbmabad.000webhostapp.com/imgs/boys.png");
-                params.put("profile_status", profile_status);
-
-                return params;
             }
-        };
-        VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+
+            @Override
+            protected String doInBackground(Bitmap... params) {
+                Bitmap bitmap = params[0];
+                String uploadImage1 = getStringImage(bitmap);
+                Bitmap bitmap1=params[1];
+                String uploadImage2 = getStringImage(bitmap1);
+                Bitmap bitmap2=params[2];
+                String uploadImage3 = getStringImage(bitmap2);
+                Bitmap bitmap3=params[3];
+                String uploadImage4 = getStringImage(bitmap3);
+                Bitmap bitmap4=params[4];
+                String uploadImage5 = getStringImage(bitmap4);
+                System.out.println("bm2="+bitmap);
+//                String[] uploadImages = new String[params.length];
+//                for (int i = 0; i < params.length; i++) {
+//                    Bitmap bitmap2 = params[i];
+//                    uploadImages[i] = getStringImage(bitmap2);
+//                }
+                HashMap<String,String> data = new HashMap<>();
+
+//                data.put(UPLOAD_KEY, uploadImage);
+                data.put("first_name", et_first_name.getText().toString());
+                data.put("middle_name",et_middle_name.getText().toString());
+                data.put("last_name", et_last_name.getText().toString());
+                String cgender=(et_gender.getSelectedItem()!=null)?et_gender.getSelectedItem().toString():"";
+                data.put("gender", cgender);
+                data.put("dob", displayDate.getText().toString());
+                data.put("place_of_birth", et_place_of_birth.getText().toString());
+                data.put("profile_image", uploadImage1);
+                data.put("height", height);
+                data.put("weight", str_weight);
+                data.put("complexion", complexion);
+                data.put("spectacles", str_spectacles);
+                data.put("physial_handicap", physial_handicap);
+                data.put("education", et_edu.getText().toString());
+                data.put("occupation", et_occ.getText().toString());
+                data.put("income", et_income.getText().toString());
+                data.put("origin_of_family", et_origin_of_family.getText().toString());
+                data.put("no_of_brothers", no_of_brothers);
+                data.put("no_of_sisters", no_of_sisters);
+                data.put("no_of_brothers_married", no_of_brothers_married);
+                data.put("no_of_sisters_married", no_of_sisters_married);
+                data.put("no_of_brothers_unmarried", no_of_brothers_unmarried);
+                data.put("no_of_sisters_unmarried", no_of_sisters_unmarried);
+                data.put("hobbies", et_hobbies.getText().toString());
+                data.put("manglik", manglik);
+                data.put("required_education_of_partner", et_required_education.getText().toString());
+                data.put("age_group_preference_for_partner", age_group_preference_for_partner);
+                data.put("required_height_of_partner", required_height_of_partner);
+                data.put("required_weight_of_partner", required_weight_of_partner);
+                data.put("email_address", et_email_address.getText().toString());
+                data.put("mobile_number", et_mobile_number.getText().toString());
+                data.put("landline_number", et_landline_number.getText().toString());
+                data.put("residence_number", et_residence_number.getText().toString());
+                data.put("address_line_1", et_address_line1.getText().toString());
+                data.put("address_line_2", et_address_line2.getText().toString());
+                data.put("aadhar_card_or_pan_card",uploadImage2);
+                data.put("latest_education_qualification", uploadImage3);
+                data.put("income_proof", uploadImage4);
+                data.put("fee_submitted_2000_proof", uploadImage5);
+                data.put("profile_status", profile_status);
+
+                String result = rh.sendPostRequest(regurl,data);
+
+                return result;
+            }
+        }
+
+        UploadImage ui = new UploadImage();
+        ui.execute(bitmap,bitmap_aadhar,bitmap_edu_quali,bitmap_income_proof,bitmap_proof_2000);
+    }
+
+    private void registerUser() {
+
+        uploadImage();
+
+
+
     }
     class MyAsyncTask extends AsyncTask<String, String, String>
     {
@@ -1052,11 +1160,12 @@ Button btn_login,btn_proof_2000,btn_income_proof,btn_edu_quali;;
                 }
 
         }
+        if(data!=null)
         filePath = data.getData();
 
 
 
-//        viewPager.setOnPageChangeListener(mPageChangeListener);
+        viewPager.setOnPageChangeListener(mPageChangeListener);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {

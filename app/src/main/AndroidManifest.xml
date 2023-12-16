@@ -14,6 +14,11 @@
         android:theme="@style/Theme.BookBub.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity android:name=".SplashActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 </activity>
         <activity android:name=".LoginAndRegister" android:exported="true">
 
@@ -22,11 +27,7 @@
 
         </activity>
         <activity android:name=".AllBooks" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".UserProfileFragment" />
 
@@ -36,7 +37,8 @@
             android:theme="@style/Theme.BookBub.NoActionBar"></activity>
         <activity android:name=".NewActivity"></activity>
         <activity android:name=".ActivityOne" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:exported="true">
+
         </activity>
     </application>
 

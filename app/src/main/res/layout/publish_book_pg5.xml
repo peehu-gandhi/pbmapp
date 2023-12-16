@@ -17,11 +17,12 @@
             android:text="PROFESSIONAL DETAILS"
             android:textColor="@color/white"
             android:textSize="18sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Choose the right cover that catches user atterntion."
+            android:text='"We help to build happiness" - Punjab Biradari'
             android:textColor="@color/white"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
@@ -56,9 +57,9 @@
                 android:id="@+id/et_edu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MCA"
-                android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:text="----"
+                android:textSize="16sp" />
 
             <!-- Weight -->
             <TextView
@@ -74,9 +75,9 @@
                 android:id="@+id/et_occ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ful time"
-                android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:text="----"
+                android:textSize="16sp" />
 
             <!-- Complexion -->
             <TextView
@@ -92,9 +93,9 @@
                 android:id="@+id/et_income"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100000 P.M."
-                android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:text="----"
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

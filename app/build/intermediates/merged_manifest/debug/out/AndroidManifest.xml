@@ -24,6 +24,11 @@
         <activity
             android:name="com.example.bookbub.SplashActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.bookbub.LoginAndRegister"
@@ -34,11 +39,6 @@
         <activity
             android:name="com.example.bookbub.AllBooks"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.example.bookbub.UserProfileFragment" />
         <activity android:name="com.example.bookbub.MyBooksActivity" />
@@ -47,7 +47,9 @@
             android:theme="@style/Theme.BookBub.NoActionBar" />
         <activity android:name="com.example.bookbub.NewActivity" />
         <activity android:name="com.example.bookbub.ActivityOne" />
-        <activity android:name="com.example.bookbub.MainActivity" >
+        <activity
+            android:name="com.example.bookbub.MainActivity"
+            android:exported="true" >
         </activity>
 
         <provider

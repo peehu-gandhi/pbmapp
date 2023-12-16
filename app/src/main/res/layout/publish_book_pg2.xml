@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="A book can have multiple genres, select them wisely."
+            android:text='"We help to build happiness" - Punjab Biradari'
             android:textColor="@color/white"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
@@ -39,7 +39,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -76,9 +75,9 @@
                         android:id="@+id/et_first_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="John Doe"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Middle Name -->
                     <TextView
@@ -93,9 +92,9 @@
                         android:id="@+id/et_middle_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="James"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Last Name -->
                     <TextView
@@ -110,9 +109,9 @@
                         android:id="@+id/et_last_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Smith"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Gender -->
                     <TextView
@@ -127,9 +126,9 @@
                         android:id="@+id/et_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Male"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Date of Birth (DOB) -->
                     <TextView
@@ -144,9 +143,9 @@
                         android:id="@+id/et_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="January 1, 1990"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Place of Birth -->
                     <TextView
@@ -161,9 +160,9 @@
                         android:id="@+id/et_place_of_birth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="New York, USA"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Profile Status -->
                     <TextView
@@ -178,9 +177,9 @@
                         android:id="@+id/et_profile_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Active"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Marital Status -->
                     <TextView
@@ -195,9 +194,9 @@
                         android:id="@+id/et_marital_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Single"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Add more fields as needed -->
 

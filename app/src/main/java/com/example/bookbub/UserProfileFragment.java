@@ -92,7 +92,7 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
     private BookAdapter bookAdapter;
     private List<Book> mdata ;
     SearchView sv;
-
+    SessionManager sess;
     private ProgressBar progressBar;
     StaggeredGridLayoutManager m;
     private static  final String BASE_URL = "https://pbmabad.000webhostapp.com/Php_AllCompSendToMe.php";
@@ -103,7 +103,7 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
         setContentView(R.layout.activity_all_books);
         progressBar = findViewById(R.id.progressbar);
         sv=findViewById(R.id.sv);
-
+    sess=new SessionManager(getApplicationContext());
         m=new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
         getSupportActionBar().hide();
         initViews();
@@ -128,25 +128,48 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
     }
 
     private void filter(String text) {
+
         // creating a new array list to filter our data.
-        ArrayList<Book> filteredlist = new ArrayList<>();
-        if(mdata !=null) {
-            // running a for loop to compare elements.
-            for (Book item : mdata) {
-                // checking if the entered string matched with any item of our recycler view.
-                if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
-                    // if the item is matched we are
-                    // adding it to our filtered list.
-                    filteredlist.add(item);
-                }
+//        ArrayList<Book> filteredlist = new ArrayList<>();
+//        if(mdata !=null) {
+//            // running a for loop to compare elements.
+//            for (Book item : mdata) {
+//                // checking if the entered string matched with any item of our recycler view.
+//                if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
+//                    // if the item is matched we are
+//                    // adding it to our filtered list.
+//                    filteredlist.add(item);
+//                }
+//            }
+//        }
+//        if (filteredlist.isEmpty()) {
+//        } else {
+//            bookAdapter.filterList(filteredlist);
+//        }
+
+        ArrayList<Book> filteredList = new ArrayList<>();
+        List<Book> orig = mdata;
+
+        for (int i = 0,j=0; i < mdata.size(); i++) {
+            Book item = mdata.get(i);
+            if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
+                mdata.get(j).setOriginalPosition(i);
+                filteredList.add(item);
+                j++;
             }
+
         }
-        if (filteredlist.isEmpty()) {
-        } else {
-            // at last we are passing that filtered
-            // list to our adapter class.
-            bookAdapter.filterList(filteredlist);
+
+        if (!filteredList.isEmpty()) {
+//            mdata=filteredList;
+            bookAdapter.filterList(filteredList);
+
         }
+        else{
+//            bookAdapter.filterList(orig);
+
+        }
+
     }
 
     private void setupBookAdapter() {
@@ -272,7 +295,7 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
 //                params.put("reciever_pid", "1");
 
 
-                params.put("sender_pid", "1");
+                params.put("sender_pid", sess.getPid());
                 return params;
             }
 
@@ -316,10 +339,11 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
 //                                        is_cmp="n";
 //                                    }
 //                                }
-                                Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,"n");
+                                Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,"n",i);
                                 mdata.add(b);
                             }
                         }catch (Exception e){
+                            System.out.println("eeerrr==="+e.getMessage());
                         }
                         setupBookAdapter();
 //                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
@@ -338,7 +362,7 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("recieverPid", "102");
+                params.put("recieverPid", sess.getPid());
                 return params;
             }
 
@@ -368,7 +392,12 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
                                 TextView ratingBar,TextView item_book_author,TextView item_book_pagesrev,TextView occ) {
         // create intent and send book object to Details activity
         Intent intent = new Intent(this,BookDetailsActivity.class);
-        intent.putExtra("physical_path",mdata.get(pos).getPhysicalpath());
+        int originalPosition = mdata.get(pos).getOriginalPosition();
+
+        System.out.println("poso=="+originalPosition);
+        intent.putExtra("physical_path",mdata.get(originalPosition).getPhysicalpath());
+        intent.putExtra("pid",mdata.get(originalPosition).getPid());
+
         // Pair<View,String> p1 = Pair.create((View)imgContainer,"containerTN"); // second arg is the tansition string Name
         Pair<View,String> p2 = Pair.create((View)imgBook,"bookTN"); // second arg is the tansition string Name
         Pair<View,String> p3 = Pair.create((View)title,"booktitleTN"); // second arg is the tansition string Name

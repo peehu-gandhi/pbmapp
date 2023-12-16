@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f2f2f2"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -16,7 +23,7 @@
             android:id="@+id/txt_choose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Image"
+            android:text="Proof of ₹2000"
             android:fontFamily="@font/bon"
             android:gravity="center"
             android:textColor="@color/my_blue"
@@ -26,22 +33,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Publish books in your language"
+            android:text="Please submit proof of a transaction amounting to ₹2000 via\nPaytm, Google Pay, PhonePe, or any equivalent method."
             android:textColor="@color/my_blue"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
 
-    <androidx.legacy.widget.Space
-        android:layout_width="match_parent"
-        android:layout_height="35dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <androidx.cardview.widget.CardView
-            android:layout_width="235dp"
-            android:layout_height="388dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
@@ -52,12 +61,13 @@
             app:cardElevation="8dp">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="241dp"
                 android:id="@+id/proof_2000"
-                android:layout_height="456dp"></ImageView>
+                android:layout_height="245dp"></ImageView>
         </androidx.cardview.widget.CardView>
-        <Button
-            android:id="@+id/btn_proof_2000"
+     <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/btn_proof_2000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/edpasswd"
@@ -68,8 +78,13 @@
             android:layout_marginTop="15dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@android:color/white"
-            android:text="Upload your own book cover"/>
-        <Button android:layout_height="wrap_content"
+         android:drawableLeft="@android:drawable/ic_menu_gallery"
+         android:text="Upload from Gallery"/>
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <androidx.appcompat.widget.AppCompatButton android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/roboto_regular"
@@ -82,3 +97,4 @@
             android:layout_centerInParent="true"/>
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

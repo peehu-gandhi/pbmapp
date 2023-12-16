@@ -14,15 +14,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     GridLayout mainGrid;
     BottomNavigationView bn ;
     FrameLayout fl;
     GridLayout grid;
+    SessionManager session;
+    private FloatingActionButton fabLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +39,25 @@ public class MainActivity extends AppCompatActivity {
         grid = (GridLayout) findViewById(R.id.grid);
         fl=findViewById(R.id.fl);
         setSingleEvent(grid);
+        ImageView img=findViewById(R.id.srh_img);
+        TextView txt=findViewById(R.id.srh_txt);
+        session=new SessionManager(getApplicationContext());
+        System.out.println("gender------"+session.getGender());
+        if (session != null && session.getGender() != null &&
+                ("Female".equals(session.getGender()) || "F".equals(session.getGender())))
+        {
+            img.setImageResource(R.drawable.grooms);
+            txt.setText("Search grooms");
+        }
 
+        fabLogout = findViewById(R.id.btnLogout);
 
+        fabLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupMenu(view);
+            }
+        });
 
         //final Fragment[] selectedFragment = {new HomeFragment()};
         bn.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,8 +77,14 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     case R.id.navigation_dashboard: {
-                        Intent i=new Intent(MainActivity.this,UserProfileFragment.class);
-                        startActivity(i);
+//                        Intent i=new Intent(MainActivity.this,AboutMe.class);
+//                        startActivity(i);
+
+                        Fragment f=new AboutMe();
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.frame, f)
+                                .commit();
 
 //                        Fragment f=new UserProfileFragment();
 //                        getSupportFragmentManager()
@@ -206,4 +235,30 @@ private void setSingleEvent(GridLayout grid) {
         });
     }
 }
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.popup_menu); // Replace with your menu resource
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_item1:
+
+                        session.logoutUser();
+                        Intent i=new Intent(MainActivity.this,LoginAndRegister.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                        startActivity(i);
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        popupMenu.show();
+    }
+
 }

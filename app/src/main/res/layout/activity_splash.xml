@@ -6,21 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
     android:orientation="vertical"
-    android:background="@drawable/book3">
 
-<!--    <pl.droidsonroids.gif.GifImageView-->
-<!--        android:layout_width="206dp"-->
-<!--        android:layout_height="114dp"-->
+    android:background="@drawable/bgg"
+        android:id="@+id/root">
 
-<!--        android:src="@drawable/loading">-->
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:src="@drawable/art4" />
 
-<!--    </pl.droidsonroids.gif.GifImageView>-->
-    <TextView
-        android:layout_width="442dp"
-        android:layout_height="682dp"
-        android:fontFamily="@font/bon"
-        android:gravity="center"
-        android:text="BOOK \n BUB"
-        android:textColor="@color/startblue"
-        android:textSize="100sp"></TextView>
 </RelativeLayout>

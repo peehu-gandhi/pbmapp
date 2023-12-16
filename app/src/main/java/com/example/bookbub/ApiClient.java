@@ -23,6 +23,5 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("upload.php")
     Call<Img_Pojo> uploadImage(@Field("title") String title, @Field("image") String image,@Field("book_name") String book_name,
-@Field("author") String author,@Field("pages") String pages,@Field("language") String language,@Field("title") String genres,@Field("books_upl") String books_upl,@Field("pdf")String pdf
-    );
+@Field("author") String author,@Field("pages") String pages,@Field("language") String language,@Field("title") String genres,@Field("books_upl") String books_upl    );
 }

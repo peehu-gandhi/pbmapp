@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,17 +25,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contact Details"
-            android:textColor="@color/my_blue"
             android:fontFamily="@font/bon"
-
+            android:gravity="center"
+            android:textColor="@color/my_blue"
             android:textSize="18sp"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Either upload pdf of start writring now."
-            android:textColor="@color/white"
+            android:text="Please provide your contact details."
+            android:textColor="@color/my_blue"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
 
@@ -52,13 +61,7 @@
                 android:padding="16dp">
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Email Address"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+
 
                 <!-- Field Value -->
                 <EditText
@@ -66,17 +69,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                    android:hint="Email Address"
+                    android:backgroundTint="#2052e8"
 
                     android:layout_marginBottom="16dp" />
 
                 <!-- Mobile Number -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mobile Number"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+
 
                 <!-- Field Value -->
                 <EditText
@@ -84,16 +83,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:hint="Mobile Number"
+                    android:backgroundTint="#2052e8"
+
                     android:layout_marginBottom="16dp" />
 
                 <!-- Landline Number -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Landline Number"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+
 
                 <!-- Field Value -->
                 <EditText
@@ -101,16 +97,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:hint="Landline Number"
+                    android:backgroundTint="#2052e8"
+
                     android:layout_marginBottom="16dp" />
 
                 <!-- Residence Number -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Residence Number"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
                 <!-- Field Value -->
                 <EditText
@@ -118,41 +110,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:hint="Residence Number"
+                    android:backgroundTint="#2052e8"
+
                     android:layout_marginBottom="16dp" />
 
                 <!-- Address Line 1 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Address Line 1"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
                 <!-- Field Value -->
                 <EditText
                     android:id="@+id/et_address_line1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="123 Main Street"
+                    android:hint="Address Line 1"
+                    android:backgroundTint="#2052e8"
                     android:textSize="16sp"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Address Line 2 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Address Line 2"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+
 
                 <!-- Field Value -->
                 <EditText
                     android:id="@+id/et_address_line2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Apt 4B"
+                    android:hint="Address Line 2"
+                    android:backgroundTint="#2052e8"
+
                     android:textSize="16sp" />
 
 
@@ -161,3 +146,4 @@
 
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,6 +15,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,16 +27,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hobbies And Preferences"
-            android:textColor="@color/my_blue"
             android:fontFamily="@font/bon"
+            android:gravity="center"
+            android:textColor="@color/my_blue"
             android:textSize="18sp"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Either upload pdf of start writring now."
-            android:textColor="@color/white"
+            android:text="Kindly share details about your hobbies and preferences."
+            android:textColor="@color/my_blue"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
 
@@ -60,21 +71,17 @@
                     android:padding="16dp">
 
                     <!-- Hobbies -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Hobbies"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+
 
                     <!-- Field Value -->
                     <EditText
                         android:id="@+id/et_hobbies"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Reading, Painting"
                         android:textSize="16sp"
+                        android:hint="Hobbies"
+                        android:backgroundTint="#2052e8"
+
                         android:layout_marginBottom="16dp" />
 
                     <!-- Manglik -->
@@ -96,20 +103,15 @@
                         android:layout_marginBottom="16dp" />
 
                     <!-- Required Education of Partner -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Required Education of Partner"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+
 
                     <!-- Field Value -->
                     <EditText
                         android:id="@+id/et_required_education"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Graduate"
+                        android:hint="Required Education of Partner"
+                        android:backgroundTint="#2052e8"
                         android:textSize="16sp"
                         android:layout_marginBottom="16dp" />
 
@@ -128,6 +130,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:stepSize="1"
+                        app:tickColor="#2052e8"
+                        app:tickColorActive="#2052e8"
+                        app:tickColorInactive="#2052e8"
+                        app:thumbColor="#2052e8"
+                        app:haloColor="#2052e8"
+                        app:thumbStrokeColor="#2052e8"
                         android:valueFrom="1"
                         android:valueTo="100"
                         app:values="@array/default_age_range"
@@ -229,6 +237,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:stepSize="1"
+                        app:tickColor="#2052e8"
+                        app:tickColorActive="#2052e8"
+                        app:tickColorInactive="#2052e8"
+                        app:thumbColor="#2052e8"
+                        app:haloColor="#2052e8"
+                        app:thumbStrokeColor="#2052e8"
                         android:valueFrom="1"
                         android:valueTo="300"
                         android:textSize="16sp" />
@@ -237,3 +251,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

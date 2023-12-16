@@ -1,3 +1,11 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical">
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -6,6 +14,33 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Details"
+            android:fontFamily="@font/bon"
+            android:gravity="center"
+            android:textColor="@color/my_blue"
+            android:textSize="18sp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_choose"
+            android:text="Please fill your personal details."
+            android:textColor="@color/my_blue"
+            android:textSize="12sp"></TextView>
+    </RelativeLayout>
+
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,54 +73,38 @@
 
 
                     <!-- First Name -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="First Name"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+
 
                     <EditText
                         android:id="@+id/et_first_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="John Doe"
+                        android:hint="First Name"
                         android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:backgroundTint="#2052e8"
+
+                    android:layout_marginBottom="16dp" />
 
                     <!-- Middle Name -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Middle Name"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+
 
                     <EditText
                         android:id="@+id/et_middle_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="James"
+                        android:hint="Middle Name"
                         android:textSize="16sp"
+                        android:backgroundTint="#2052e8"
                         android:layout_marginBottom="16dp" />
 
-                    <!-- Last Name -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Last Name"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/et_last_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Smith"
+                        android:hint="Last Name"
                         android:textSize="16sp"
+                        android:backgroundTint="#2052e8"
                         android:layout_marginBottom="16dp" />
 
                     <!-- Gender -->
@@ -93,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Gender"
-                        android:textColor="#333333"
+                        android:textColor="#a09c9c"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -108,35 +127,31 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Date of Birth (DOB)"
-                        android:textColor="#333333"
+                        android:textColor="#a09c9c"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-                    <Button
-                        android:id="@+id/button1"
+                    <androidx.appcompat.widget.AppCompatButton
+
+                    android:id="@+id/button1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
+                        android:background="#2052e8"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="20dp"
                         android:text="Change Date" />
 
 
 
-                    <!-- Place of Birth -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Place of Birth"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+
 
                     <EditText
                         android:id="@+id/et_place_of_birth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="New York, USA"
                         android:textSize="16sp"
+                        android:hint="Place of Birth"
+                        android:backgroundTint="#2052e8"
                         android:layout_marginBottom="16dp" />
 
                     <!-- Profile Status -->
@@ -144,7 +159,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Profile Status"
-                        android:textColor="#333333"
+                        android:textColor="#a09c9c"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -156,21 +171,7 @@
                         android:layout_marginBottom="16dp" />
 
                     <!-- Marital Status -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Marital Status"
-                        android:textColor="#333333"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/et_marital_status"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Single"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
 
                     <!-- Add more fields as needed -->
 
@@ -179,3 +180,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

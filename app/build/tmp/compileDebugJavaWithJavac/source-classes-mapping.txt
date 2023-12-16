@@ -1,3 +1,28 @@
+com/example/bookbub/AboutMe.java
+ com.example.bookbub.AboutMe
+ com.example.bookbub.AboutMe$1
+ com.example.bookbub.AboutMe$2
+ com.example.bookbub.AboutMe$3
+ com.example.bookbub.AboutMe$MyViewPagerAdapter
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$1
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$10
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$11
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$12
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$13
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$14
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$15
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$16
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$17
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$18
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$19
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$2
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$3
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$4
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$5
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$6
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$7
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$8
+ com.example.bookbub.AboutMe$MyViewPagerAdapter$9
 com/example/bookbub/BookDetailsActivity.java
  com.example.bookbub.BookDetailsActivity
  com.example.bookbub.BookDetailsActivity$1
@@ -31,15 +56,101 @@ com/example/bookbub/MyBooksActivity.java
  com.example.bookbub.MyBooksActivity$2
  com.example.bookbub.MyBooksActivity$3
  com.example.bookbub.MyBooksActivity$4
+com/example/bookbub/BookCallback.java
+ com.example.bookbub.BookCallback
+com/example/bookbub/VolleyCallback.java
+ com.example.bookbub.VolleyCallback
+com/example/bookbub/ApiClient.java
+ com.example.bookbub.ApiClient
+ com.example.bookbub.ApiInterface
+com/example/bookbub/PrefManager.java
+ com.example.bookbub.PrefManager
+com/example/bookbub/LoginFragment.java
+ com.example.bookbub.LoginFragment
+ com.example.bookbub.LoginFragment$1
+ com.example.bookbub.LoginFragment$2
+ com.example.bookbub.LoginFragment$3
+ com.example.bookbub.LoginFragment$4
+com/example/bookbub/The_Slide_items_Pager_Adapter.java
+ com.example.bookbub.The_Slide_items_Pager_Adapter
+com/example/bookbub/Api.java
+ com.example.bookbub.Api
+com/example/bookbub/TrendingFragment.java
+ com.example.bookbub.TrendingFragment
+com/example/bookbub/model/Book.java
+ com.example.bookbub.model.Book
+com/example/bookbub/AllBooks.java
+ com.example.bookbub.AllBooks
+ com.example.bookbub.AllBooks$1
+ com.example.bookbub.AllBooks$2
+ com.example.bookbub.AllBooks$3
+ com.example.bookbub.AllBooks$4
+ com.example.bookbub.AllBooks$5
+ com.example.bookbub.AllBooks$6
+ com.example.bookbub.AllBooks$7
+com/example/bookbub/PublishBook.java
+ com.example.bookbub.PublishBook
+com/example/bookbub/NewFragment.java
+ com.example.bookbub.NewFragment
+com/example/bookbub/MainActivity.java
+ com.example.bookbub.MainActivity
+ com.example.bookbub.MainActivity$1
+ com.example.bookbub.MainActivity$2
+ com.example.bookbub.MainActivity$3
+ com.example.bookbub.MainActivity$4
+ com.example.bookbub.MainActivity$5
+com/example/bookbub/SliderPagerAdapter.java
+ com.example.bookbub.SliderPagerAdapter
+com/example/bookbub/Img_Pojo.java
+ com.example.bookbub.Img_Pojo
+com/example/bookbub/BookAdapter.java
+ com.example.bookbub.BookAdapter
+ com.example.bookbub.BookAdapter$1
+ com.example.bookbub.BookAdapter$2
+ com.example.bookbub.BookAdapter$3
+ com.example.bookbub.BookAdapter$4
+ com.example.bookbub.BookAdapter$5
+ com.example.bookbub.BookAdapter$6
+ com.example.bookbub.BookAdapter$7
+ com.example.bookbub.BookAdapter$8
+ com.example.bookbub.BookAdapter$ValueFilter
+ com.example.bookbub.BookAdapter$bookviewholder
+ com.example.bookbub.BookAdapter$bookviewholder$1
+com/example/bookbub/AboutFragment.java
+ com.example.bookbub.AboutFragment
+ com.example.bookbub.AboutFragment$1
+ com.example.bookbub.AboutFragment$2
+com/example/bookbub/LoginAndRegister.java
+ com.example.bookbub.LoginAndRegister
+ com.example.bookbub.LoginAndRegister$AuthenticationPagerAdapter
+com/example/bookbub/Ads.java
+ com.example.bookbub.Ads
+com/example/bookbub/AppWidget.java
+ com.example.bookbub.AppWidget
+com/example/bookbub/UserProfileFragment.java
+ com.example.bookbub.UserProfileFragment
+ com.example.bookbub.UserProfileFragment$1
+ com.example.bookbub.UserProfileFragment$2
+ com.example.bookbub.UserProfileFragment$3
+ com.example.bookbub.UserProfileFragment$4
+ com.example.bookbub.UserProfileFragment$5
+ com.example.bookbub.UserProfileFragment$6
+ com.example.bookbub.UserProfileFragment$7
+com/example/bookbub/CustomItemAnimator.java
+ com.example.bookbub.CustomItemAnimator
+com/example/bookbub/AboutAdapter.java
+ com.example.bookbub.AboutAdapter
+ com.example.bookbub.AboutAdapter$1
+ com.example.bookbub.AboutAdapter$2
+ com.example.bookbub.AboutAdapter$ViewHolder
 com/example/bookbub/RegisterFragment.java
  com.example.bookbub.RegisterFragment
  com.example.bookbub.RegisterFragment$1
+ com.example.bookbub.RegisterFragment$1UploadImage
  com.example.bookbub.RegisterFragment$2
  com.example.bookbub.RegisterFragment$3
  com.example.bookbub.RegisterFragment$4
  com.example.bookbub.RegisterFragment$5
- com.example.bookbub.RegisterFragment$6
- com.example.bookbub.RegisterFragment$7
  com.example.bookbub.RegisterFragment$MyAsyncTask
  com.example.bookbub.RegisterFragment$MyViewPagerAdapter
  com.example.bookbub.RegisterFragment$MyViewPagerAdapter$1
@@ -78,16 +189,9 @@ com/example/bookbub/RegisterFragment.java
  com.example.bookbub.RegisterFragment$MyViewPagerAdapter$9
 com/example/bookbub/Album.java
  com.example.bookbub.Album
-com/example/bookbub/BookCallback.java
- com.example.bookbub.BookCallback
 com/example/bookbub/GoogleFormService.java
  com.example.bookbub.FormData
  com.example.bookbub.GoogleFormService
-com/example/bookbub/VolleyCallback.java
- com.example.bookbub.VolleyCallback
-com/example/bookbub/ApiClient.java
- com.example.bookbub.ApiClient
- com.example.bookbub.ApiInterface
 com/example/bookbub/RedeemFragment.java
  com.example.bookbub.RedeemFragment
 com/example/bookbub/BookClickListener.java
@@ -95,26 +199,12 @@ com/example/bookbub/BookClickListener.java
 com/example/bookbub/HomeFragment.java
  com.example.bookbub.HomeFragment
  com.example.bookbub.HomeFragment$1
-com/example/bookbub/PrefManager.java
- com.example.bookbub.PrefManager
 com/example/bookbub/SharedPrefManager.java
  com.example.bookbub.SharedPrefManager
-com/example/bookbub/LoginFragment.java
- com.example.bookbub.LoginFragment
- com.example.bookbub.LoginFragment$1
- com.example.bookbub.LoginFragment$2
- com.example.bookbub.LoginFragment$3
- com.example.bookbub.LoginFragment$4
-com/example/bookbub/The_Slide_items_Pager_Adapter.java
- com.example.bookbub.The_Slide_items_Pager_Adapter
 com/example/bookbub/Urls.java
  com.example.bookbub.URLs
 com/example/bookbub/VolleySingleton.java
  com.example.bookbub.VolleySingleton
-com/example/bookbub/Api.java
- com.example.bookbub.Api
-com/example/bookbub/TrendingFragment.java
- com.example.bookbub.TrendingFragment
 com/example/bookbub/NewActivity.java
  com.example.bookbub.NewActivity
  com.example.bookbub.NewActivity$1
@@ -125,21 +215,10 @@ com/example/bookbub/NewActivity.java
  com.example.bookbub.NewActivity$6
  com.example.bookbub.NewActivity$7
  com.example.bookbub.NewActivity$8
+com/example/bookbub/ValueFilter2.java
+ com.example.bookbub.ValueFilter2
 com/example/bookbub/Books.java
  com.example.bookbub.Books
-com/example/bookbub/model/Book.java
- com.example.bookbub.model.Book
-com/example/bookbub/AllBooks.java
- com.example.bookbub.AllBooks
- com.example.bookbub.AllBooks$1
- com.example.bookbub.AllBooks$2
- com.example.bookbub.AllBooks$3
- com.example.bookbub.AllBooks$4
- com.example.bookbub.AllBooks$5
- com.example.bookbub.AllBooks$6
- com.example.bookbub.AllBooks$7
-com/example/bookbub/PublishBook.java
- com.example.bookbub.PublishBook
 com/example/bookbub/AddBookActivity.java
  com.example.bookbub.AddBookActivity
  com.example.bookbub.AddBookActivity$1
@@ -151,39 +230,14 @@ com/example/bookbub/AddBookActivity.java
  com.example.bookbub.AddBookActivity$7
 com/example/bookbub/RetrofitClient.java
  com.example.bookbub.RetrofitClient
-com/example/bookbub/NewFragment.java
- com.example.bookbub.NewFragment
-com/example/bookbub/MainActivity.java
- com.example.bookbub.MainActivity
- com.example.bookbub.MainActivity$1
- com.example.bookbub.MainActivity$2
- com.example.bookbub.MainActivity$3
 com/example/bookbub/ActivityOne.java
  com.example.bookbub.ActivityOne
-com/example/bookbub/SliderPagerAdapter.java
- com.example.bookbub.SliderPagerAdapter
+com/example/bookbub/SessionManager.java
+ com.example.bookbub.SessionManager
 com/example/bookbub/RequestHandler.java
  com.example.bookbub.RequestHandler
 com/example/bookbub/SliderItemFragment.java
  com.example.bookbub.SliderItemFragment
-com/example/bookbub/Img_Pojo.java
- com.example.bookbub.Img_Pojo
-com/example/bookbub/BookAdapter.java
- com.example.bookbub.BookAdapter
- com.example.bookbub.BookAdapter$1
- com.example.bookbub.BookAdapter$2
- com.example.bookbub.BookAdapter$3
- com.example.bookbub.BookAdapter$4
- com.example.bookbub.BookAdapter$5
- com.example.bookbub.BookAdapter$6
- com.example.bookbub.BookAdapter$7
- com.example.bookbub.BookAdapter$bookviewholder
- com.example.bookbub.BookAdapter$bookviewholder$1
- com.example.bookbub.BookAdapter$bookviewholder$2
-com/example/bookbub/AboutFragment.java
- com.example.bookbub.AboutFragment
- com.example.bookbub.AboutFragment$1
- com.example.bookbub.AboutFragment$2
 com/example/bookbub/MyBooksAdapter.java
  com.example.bookbub.MyBooksAdapter
  com.example.bookbub.MyBooksAdapter$1
@@ -198,26 +252,8 @@ com/example/bookbub/ResponsePOJO.java
  com.example.bookbub.ResponsePOJO
 com/example/bookbub/BuildConfig.java
  com.example.bookbub.BuildConfig
-com/example/bookbub/LoginAndRegister.java
- com.example.bookbub.LoginAndRegister
- com.example.bookbub.LoginAndRegister$AuthenticationPagerAdapter
-com/example/bookbub/Ads.java
- com.example.bookbub.Ads
 com/example/bookbub/User.java
  com.example.bookbub.User
-com/example/bookbub/AppWidget.java
- com.example.bookbub.AppWidget
 com/example/bookbub/SliderAdapter.java
  com.example.bookbub.SliderAdapter
  com.example.bookbub.SliderAdapter$Holder
-com/example/bookbub/UserProfileFragment.java
- com.example.bookbub.UserProfileFragment
- com.example.bookbub.UserProfileFragment$1
- com.example.bookbub.UserProfileFragment$2
- com.example.bookbub.UserProfileFragment$3
- com.example.bookbub.UserProfileFragment$4
- com.example.bookbub.UserProfileFragment$5
- com.example.bookbub.UserProfileFragment$6
- com.example.bookbub.UserProfileFragment$7
-com/example/bookbub/CustomItemAnimator.java
- com.example.bookbub.CustomItemAnimator

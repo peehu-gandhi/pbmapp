@@ -3,11 +3,15 @@ package com.example.bookbub;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +41,15 @@ public class AboutFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param3";
     private static final String ARG_PARAM2 = "param4";
-
+    ProgressBar progressBar;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private List<Ads> images;
     SliderView sliderView;
+    RecyclerView recyclerView;
+
+    ArrayList images2 = null;
 
     public AboutFragment() {
         // Required empty public constructor
@@ -81,22 +89,43 @@ public class AboutFragment extends Fragment {
         if (container != null) {
             container.removeAllViews();
         }
-        View v= inflater.inflate(R.layout.fragment_about, container, false);
-        sliderView = v.findViewById(R.id.image_slider);
 
+        View v= inflater.inflate(R.layout.fragment_about, container, false);
+//        sliderView = v.findViewById(R.id.image_slider);
+//        SliderAdapter sliderAdapter = new SliderAdapter(images,getContext());
+//        sliderView.setSliderAdapter(sliderAdapter);
+//        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+//        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+//        sliderView.startAutoCycle();
+
+
+        // Getting reference of recyclerView
+        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        progressBar=v.findViewById(R.id.progressbar);
         uploadImages();
+        // Setting the layout as Staggered Grid for vertical orientation
+//        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+//        recyclerView.setLayoutManager(staggeredGridLayoutManager);
+//
+//        // Sending reference and data to Adapter
+//        AboutAdapter adapter = new AboutAdapter(getContext(), images2);
+//
+//        recyclerView.setAdapter(adapter);
+
+//        uploadImages();
 
         return v;
     }
 
     private void uploadImages() {
-        images = new ArrayList<>() ;
-
-        String urllogin="https://myimon.000webhostapp.com/ads.php";
+        images2 = new ArrayList<>() ;
+        progressBar.setVisibility(View.VISIBLE);
+        String urllogin="https://pbmabad.000webhostapp.com/Php_eventScript.php";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urllogin,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressBar.setVisibility(View.GONE);
 
                         try {
                             //converting response to json object
@@ -104,13 +133,14 @@ public class AboutFragment extends Fragment {
                             for(int i=0;i<obj.length();i++)
                             {
                                 JSONObject o=obj.getJSONObject(i);
-                                images.add(new Ads(o.getString("ad")));
+                                images2.add(o.getString("image_path"));
+                                System.out.println("image==>"+o.getString("image_path"));
                             }
-                            SliderAdapter sliderAdapter = new SliderAdapter(images,getContext());
-                            sliderView.setSliderAdapter(sliderAdapter);
-                            sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-                            sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-                            sliderView.startAutoCycle();
+                            StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+                            recyclerView.setLayoutManager(staggeredGridLayoutManager);
+                            AboutAdapter adapter = new AboutAdapter(getContext(), images2);
+
+                            recyclerView.setAdapter(adapter);
                         }
                         catch (JSONException e) {
                             System.out.println("error=="+e.getMessage());

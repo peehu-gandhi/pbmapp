@@ -5,7 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
+
+import java.util.Random;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class SplashActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN_TIME_OUT=5000;
@@ -23,6 +33,13 @@ public class SplashActivity extends AppCompatActivity {
 
 
         getSupportActionBar().hide();
+        RelativeLayout rootLayout = findViewById(R.id.root);
+        int gifResourceId = R.drawable.art;
+
+        // Replace `R.drawable.art` with the actual resource ID of your GIF
+
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -39,4 +56,5 @@ public class SplashActivity extends AppCompatActivity {
         }, SPLASH_SCREEN_TIME_OUT);
         setContentView(R.layout.activity_splash);
     }
+
 }

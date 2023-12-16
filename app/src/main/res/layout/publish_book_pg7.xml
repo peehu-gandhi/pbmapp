@@ -17,18 +17,19 @@
             android:text="CONTACT DETAILS"
             android:textColor="@color/white"
             android:textSize="18sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Either upload pdf of start writring now."
+            android:text='"We help to build happiness" - Punjab Biradari'
             android:textColor="@color/white"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
 
     <androidx.legacy.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="35dp" />
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,9 +62,9 @@
                     android:id="@+id/et_email_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="example@email.com"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Mobile Number -->
                 <TextView
@@ -79,9 +80,9 @@
                     android:id="@+id/et_mobile_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="123-456-7890"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Landline Number -->
                 <TextView
@@ -97,9 +98,9 @@
                     android:id="@+id/et_landline_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="987-654-3210"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Residence Number -->
                 <TextView
@@ -115,9 +116,9 @@
                     android:id="@+id/et_residence_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="876-543-2109"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Address Line 1 -->
                 <TextView
@@ -133,9 +134,9 @@
                     android:id="@+id/et_address_line1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="123 Main Street"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Address Line 2 -->
                 <TextView
@@ -151,7 +152,7 @@
                     android:id="@+id/et_address_line2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Apt 4B"
+                    android:text="----"
                     android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

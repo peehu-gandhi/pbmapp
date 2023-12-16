@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_round"
         android:iconifiedByDefault="false"
-        android:queryHint="Search Books"
+        android:queryHint="Search Candidates"
         tools:ignore="MissingConstraints" />
 
 

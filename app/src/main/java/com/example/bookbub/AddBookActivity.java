@@ -94,7 +94,7 @@ public class AddBookActivity extends AppCompatActivity implements BookCallback{
         } else {
             // at last we are passing that filtered
             // list to our adapter class.
-            bookAdapter.filterList(filteredlist);
+           // bookAdapter.filterList(filteredlist);
         }
     }
 
@@ -138,7 +138,7 @@ public class AddBookActivity extends AppCompatActivity implements BookCallback{
                     loadBooks(allCompanionsString);
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    System.out.println("Exception===>"+e.getMessage());
                 }
 
                 //creating a new user object
@@ -154,6 +154,35 @@ public class AddBookActivity extends AppCompatActivity implements BookCallback{
             public void onError(Exception error) {
 
             }
+
+//            @Override
+//            public void onSuccess(JSONObject obj) {
+//                try {
+////                    obj = new JSONObject(response);
+//                    JSONObject all_recievers = obj.getJSONObject("all_recievers");
+//                    String allCompanionsString=     (String) all_recievers.get("all_recievers");
+//                    System.out.println("allCompanionsString==>"+allCompanionsString);
+////                    if(allCompanionsString!=null)
+////                    {
+////                        String[] allCompanions = allCompanionsString.split("\\|");
+//////                        System.out.println("comps==>"+b.getLast_name());
+//////                        for (String companion : allCompanions) {
+//////                            if (b.getPid().equals(companion)) {
+//////                                holder.imgFav.setImageResource(R.drawable.btn_custom);
+//////                            }
+//////                        }
+//////                    if (companion.equals(keyToFind)) {
+//////                        containsKey = true;
+//////                        break; // Exit the loop as soon as the key is found
+//////                    }
+////                    }
+//                    loadBooks(allCompanionsString);
+//
+//                } catch (JSONException e) {
+//                 System.out.println("h exc==>"+e.getMessage());
+//                    //   e.printStackTrace();
+//                }
+
         });
 
 
@@ -267,7 +296,7 @@ public class AddBookActivity extends AppCompatActivity implements BookCallback{
                                         is_cmp="n";
                                     }
                                 }
-                                Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,companions);
+                                Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,companions,i);
                                 mdata.add(b);
                             }
                         }catch (Exception e){

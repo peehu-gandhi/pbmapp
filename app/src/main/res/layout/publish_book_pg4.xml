@@ -17,11 +17,12 @@
             android:text="APPEARANCE"
             android:textColor="@color/white"
             android:textSize="18sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Book titles are the first thing a potential reader sees."
+            android:text='"We help to build happiness" - Punjab Biradari'
             android:textColor="@color/white"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
@@ -30,7 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="35dp" />
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -64,9 +64,9 @@
                     android:id="@+id/et_height"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="5'11\"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Weight -->
                 <TextView
@@ -82,9 +82,9 @@
                     android:id="@+id/et_weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="160 lbs"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Complexion -->
                 <TextView
@@ -100,9 +100,9 @@
                     android:id="@+id/et_complexion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fair"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Spectacles -->
                 <TextView
@@ -118,9 +118,9 @@
                     android:id="@+id/et_spectacles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="----"
+                    android:textSize="16sp" />
 
                 <!-- Physical Handicap -->
                 <TextView
@@ -136,7 +136,7 @@
                     android:id="@+id/et_physical_handicap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="----"
                     android:textSize="16sp" />
 
             </LinearLayout>

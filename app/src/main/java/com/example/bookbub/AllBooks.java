@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,10 +44,12 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
     private BookAdapter bookAdapter;
     private List<Book> mdata ;
     SearchView sv;
-
+    int ppid;
+    String ggender;
     private ProgressBar progressBar;
+    SessionManager session;
     StaggeredGridLayoutManager m;
-    private static  final String BASE_URL = "https://pbmabad.000webhostapp.com/Php_AllGrooms.php";
+    private static   String BASE_URL = "https://pbmabad.000webhostapp.com/Php_AllGrooms.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +57,19 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
         setContentView(R.layout.activity_all_books);
                 progressBar = findViewById(R.id.progressbar);
         sv=findViewById(R.id.sv);
-
+        session=new SessionManager(getApplicationContext());
+        Intent receivedIntent = getIntent();
+//        String gender = receivedIntent.getStringExtra("gender");
+//        int pid = receivedIntent.getIntExtra("pid",0);
+        System.out.println("hh=="+session.getGender());
+        if (session != null && session.getGender() != null &&
+                ("Male".equals(session.getGender()) || "M".equals(session.getGender())))         {
+            BASE_URL = "https://pbmabad.000webhostapp.com/Php_AllBrides.php";
+        }
         m=new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
         getSupportActionBar().hide();
         initViews();
-        initmdataBooks();
+        initmdataBooks(ppid);
 
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -69,6 +80,8 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
             @Override
             public boolean onQueryTextChange(String newText) {
                 filter(newText);
+//                bookAdapter.getFilter().filter(newText);
+
                 return false;
             }
         });
@@ -77,27 +90,51 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
     }
 
     private void filter(String text) {
+
         // creating a new array list to filter our data.
-        ArrayList<Book> filteredlist = new ArrayList<>();
-        if(mdata !=null) {
-            // running a for loop to compare elements.
-            for (Book item : mdata) {
-                // checking if the entered string matched with any item of our recycler view.
-                if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
-                    // if the item is matched we are
-                    // adding it to our filtered list.
-                    filteredlist.add(item);
-                }
+//        ArrayList<Book> filteredlist = new ArrayList<>();
+//        if(mdata !=null) {
+//            // running a for loop to compare elements.
+//            for (Book item : mdata) {
+//                // checking if the entered string matched with any item of our recycler view.
+//                if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
+//                    // if the item is matched we are
+//                    // adding it to our filtered list.
+//                    filteredlist.add(item);
+//                }
+//            }
+//        }
+//        if (filteredlist.isEmpty()) {
+//        } else {
+//            bookAdapter.filterList(filteredlist);
+//        }
+
+        ArrayList<Book> filteredList = new ArrayList<>();
+        List<Book> orig = mdata;
+
+        for (int i = 0,j=0; i < mdata.size(); i++) {
+            Book item = mdata.get(i);
+            if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
+                mdata.get(j).setOriginalPosition(i);
+                filteredList.add(item);
+                j++;
             }
+
         }
-        if (filteredlist.isEmpty()) {
-        } else {
-            bookAdapter.filterList(filteredlist);
+
+        if (!filteredList.isEmpty()) {
+//            mdata=filteredList;
+            bookAdapter.filterList(filteredList);
+
         }
+        else{
+//            bookAdapter.filterList(orig);
+
+        }
+
     }
 
     private void setupBookAdapter() {
-
         bookAdapter = new BookAdapter(mdata,this,getApplicationContext());
         rvBooks.setLayoutManager(m);
         rvBooks.setAdapter(bookAdapter);
@@ -106,7 +143,7 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
         rvBooks.setItemAnimator(new DefaultItemAnimator());
 
     }
-    private void initmdataBooks() {
+    private void initmdataBooks(int pid) {
         // for testing purpos I'm creating a random set of books
         // you may get your data from web service or firebase database.
         mdata = new ArrayList<>();
@@ -115,11 +152,28 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
             public void onSuccess(String response) {
                 JSONObject obj = null;
                 try {
+                    System.out.println("allCompanionsString=22=>" );
+
                     obj = new JSONObject(response);
-                    JSONObject all_recievers = obj.getJSONObject("all_recievers");
-                    String allCompanionsString=     (String) all_recievers.get("all_recievers");
-                    System.out.println("allCompanionsString==>"+allCompanionsString);
-                    loadBooks(allCompanionsString);
+                    System.out.println("allCompanionsString=22=>response"+response );
+
+                    String all_recievers = obj.getString("all_recievers");
+                    System.out.println("allCompanionsString=22=>2"+all_recievers);
+
+//                    System.out.println("reci===>>>" + all_recievers.get("all_recievers"));
+//                    JSONArray allRecieversArray = all_recievers.getJSONArray("all_recievers");
+                    String allCompanionsString="";
+//                    System.out.println("allCompanionsString=22=>2 rec==" +allRecieversArray.length()+" s"+allRecieversArray);
+//
+//                    for (int i = 0; i < allRecieversArray.length(); i++) {
+//                     allCompanionsString = (String) all_recievers.get("all_recievers");
+                    System.out.println("allCompanionsString=22=>====>" + allCompanionsString);
+                    loadBooks(all_recievers);
+//                    if (all_recievers.get("all_recievers")!=null) {
+//                        String allCompanionsString = (String) all_recievers.get("all_recievers");
+//                        System.out.println("allCompanionsString==>" + allCompanionsString);
+//                        loadBooks(allCompanionsString);
+//                    }
 
                 } catch (JSONException e) {
                    System.out.println("exception e==>"+e.getMessage());
@@ -131,12 +185,49 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
             public void onError(Exception error) {
 
             }
-        });
+
+//            @Override
+//            public void onSuccess(JSONObject response) {
+//                try {
+//                    System.out.println("allCompanionsString=22=>" );
+//
+////                    JSONObject obj = new JSONObject(response);
+//                    JSONObject all_recievers = response.getJSONObject("all_recievers");
+//                    System.out.println("allCompanionsString=22=>2" );
+//
+////                    System.out.println("reci===>>>" + all_recievers.get("all_recievers"));
+////                    JSONArray allRecieversArray = all_recievers.getJSONArray("all_recievers");
+//                    String allCompanionsString="";
+////                    System.out.println("allCompanionsString=22=>2 rec==" +allRecieversArray.length()+" s"+allRecieversArray);
+////
+////                    for (int i = 0; i < allRecieversArray.length(); i++) {
+//
+//                    allCompanionsString = (String) all_recievers.get("all_recievers");
+//                    System.out.println("allCompanionsString=22=>====>" + allCompanionsString);
+//
+//                    loadBooks(allCompanionsString);
+//
+//
+//
+//
+////                    if (all_recievers.get("all_recievers")!=null) {
+////                        String allCompanionsString = (String) all_recievers.get("all_recievers");
+////                        System.out.println("allCompanionsString==>" + allCompanionsString);
+////                        loadBooks(allCompanionsString);
+////                    }
+//
+//                } catch (JSONException e) {
+//                    System.out.println("exception e==>"+e.getMessage());
+//
+//                }
+//            }
+        },pid);
     }
-    private void allCompanions(final VolleyCallback callback) {
+    private void allCompanions(final VolleyCallback callback,int pid) {
         String urllogin="https://pbmabad.000webhostapp.com/Php_IsCompanion.php";
         final String[] all_companions = new String[1];
 
+        System.out.println("obj===>");
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urllogin,
                 new Response.Listener<String>() {
@@ -144,21 +235,14 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
                     public void onResponse(String response) {
 
                         try {
-                            //converting response to json object
                             JSONObject obj = new JSONObject(response);
-                            System.out.println("obj===>"+obj);
-
+                            System.out.println("obj===>"+response);
                             JSONObject all_recievers = obj.getJSONObject("all_recievers");
-                            //creating a new user object
-//
-//                                        System.out.println("all_recievers=="+all_recievers.get("all_recievers"));
-                            callback.onSuccess(response);
+                            String rr=all_recievers.toString();
+                            System.out.println("rr===>"+rr);
 
-//                            (String) all_recievers.get("all_recievers");
+                            callback.onSuccess(rr);
 
-//                                        else {
-//                                            Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-//                                        }
                         } catch (JSONException e) {
                             System.out.println("error=="+e.getMessage());
                             callback.onError(e);
@@ -181,10 +265,9 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("reciever_pid","1");
 
 
-                params.put("sender_pid","101");
+                params.put("sender_pid",session.getPid());
                 return params;
             }
 
@@ -231,7 +314,7 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
                                         is_cmp="n";
                                     }
                                 }
-                                Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,companions);
+                                Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,companions,i);
                                 mdata.add(b);
                             }
                         }catch (Exception e){
@@ -275,9 +358,12 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
                                 TextView title,
                                 TextView ratingBar,TextView item_book_author,TextView item_book_pagesrev,TextView occ) {
         // create intent and send book object to Details activity
+        int originalPosition = mdata.get(pos).getOriginalPosition();
+
+        System.out.println("poso=="+originalPosition);
         Intent intent = new Intent(this,BookDetailsActivity.class);
-        intent.putExtra("physical_path",mdata.get(pos).getPhysicalpath());
-        intent.putExtra("pid",mdata.get(pos).getPid());
+        intent.putExtra("physical_path",mdata.get(originalPosition).getPhysicalpath());
+        intent.putExtra("pid",mdata.get(originalPosition).getPid());
 
         // Pair<View,String> p1 = Pair.create((View)imgContainer,"containerTN"); // second arg is the tansition string Name
         Pair<View,String> p2 = Pair.create((View)imgBook,"bookTN"); // second arg is the tansition string Name
@@ -300,4 +386,23 @@ public class AllBooks extends AppCompatActivity implements BookCallback{
 
 
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    String gender = data.getStringExtra("gender");
+                    int pid = data.getIntExtra("pid", 0); // Default value is 0 if "pid" is not found
+                    System.out.println("pid==" + pid);
+                    ppid=pid;
+                    ggender=gender;
+                    System.out.println("gen==" + gender);
+                }
+            }
+        }
+    }
+
 }

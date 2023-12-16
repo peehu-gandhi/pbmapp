@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                     android:layout_height="86dp"
                     android:layout_toStartOf="@id/textGrid"
                     android:layout_toLeftOf="@id/textGrid"
-                    android:src="@drawable/bookquote"></ImageView>
+                    android:src="@drawable/punjab_logo"></ImageView>
 
                 <TextView
                     android:id="@+id/textGrid"
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/indigo_daisy"
-                    android:text="Learn, Educate and\nInspire..."
+                    android:text="We help to build\n    happiness..."
                     android:textColor="@android:color/white"
                     android:textSize="30sp" />
             </LinearLayout>
@@ -89,20 +89,23 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/upload" />
+                            android:src="@drawable/ent_heart" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="Upload"
+                            android:text="Showing Interest"
+                            android:scrollHorizontally="true"
+                            android:ellipsize="none"
                             android:textAlignment="center"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="@font/book_font"
+                            android:textColor="#2052E8"
+                            android:textSize="12sp"
+                            android:singleLine="true" />
 
                     </LinearLayout>
 
@@ -127,20 +130,23 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:id="@+id/srh_img"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/explore" />
+                            android:src="@drawable/bfinal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="Explore Books"
+                            android:text="Search brides"
+                            android:id="@+id/srh_txt"
+                            android:fontFamily="@font/book_font"
                             android:textAlignment="center"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="#2052E8"
+                            android:textSize="12sp"
+                            />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -163,20 +169,21 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/account" />
+                            android:src="@drawable/recieved_heart" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="Account"
+                            android:text="Received Interest"
                             android:textAlignment="center"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="#2052E8"
+                            android:fontFamily="@font/book_font"
+                            android:textSize="12sp"
+                             />
 
                     </LinearLayout>
 
@@ -201,20 +208,21 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/speak" />
+                            android:src="@drawable/about" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="Read Along"
+                            android:text="Punjab Biradari"
+                            android:fontFamily="@font/book_font"
                             android:textAlignment="center"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="#2052E8"
+                            android:textSize="12sp"
+                            />
 
                     </LinearLayout>
 
@@ -222,13 +230,26 @@
                 <!-- Column 2 -->
 
             </GridLayout>
-        </LinearLayout>
-    </FrameLayout>
 
+        </LinearLayout>
+
+    </FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/startblue"
+        android:src="@drawable/logout"
+        app:tint="@color/white"
+        android:layout_alignParentRight="true" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="51dp"
+        android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
-</LinearLayout>
+</RelativeLayout>

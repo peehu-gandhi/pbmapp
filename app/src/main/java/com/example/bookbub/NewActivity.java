@@ -696,7 +696,7 @@ private RecyclerView rvBooks;
 private BookAdapter bookAdapter;
 private List<Book> mdata ;
         SearchView sv;
-
+SessionManager sess;
 private ProgressBar progressBar;
         StaggeredGridLayoutManager m;
 private static  final String BASE_URL = "https://pbmabad.000webhostapp.com/Php_AllCompanionInfoMale.php";
@@ -707,7 +707,7 @@ protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_all_books);
         progressBar = findViewById(R.id.progressbar);
         sv=findViewById(R.id.sv);
-
+        sess=new SessionManager(getApplicationContext());
         m=new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
         getSupportActionBar().hide();
         initViews();
@@ -732,26 +732,49 @@ public boolean onQueryTextChange(String newText) {
         }
 
 private void filter(String text) {
+
         // creating a new array list to filter our data.
-        ArrayList<Book> filteredlist = new ArrayList<>();
-        if(mdata !=null) {
-        // running a for loop to compare elements.
-        for (Book item : mdata) {
-        // checking if the entered string matched with any item of our recycler view.
-        if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
-        // if the item is matched we are
-        // adding it to our filtered list.
-        filteredlist.add(item);
+//        ArrayList<Book> filteredlist = new ArrayList<>();
+//        if(mdata !=null) {
+//            // running a for loop to compare elements.
+//            for (Book item : mdata) {
+//                // checking if the entered string matched with any item of our recycler view.
+//                if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
+//                    // if the item is matched we are
+//                    // adding it to our filtered list.
+//                    filteredlist.add(item);
+//                }
+//            }
+//        }
+//        if (filteredlist.isEmpty()) {
+//        } else {
+//            bookAdapter.filterList(filteredlist);
+//        }
+
+        ArrayList<Book> filteredList = new ArrayList<>();
+        List<Book> orig = mdata;
+
+        for (int i = 0,j=0; i < mdata.size(); i++) {
+                Book item = mdata.get(i);
+                if (item.getFirst_name().toLowerCase().contains(text.toLowerCase())) {
+                        mdata.get(j).setOriginalPosition(i);
+                        filteredList.add(item);
+                        j++;
+                }
+
         }
+
+        if (!filteredList.isEmpty()) {
+//            mdata=filteredList;
+                bookAdapter.filterList(filteredList);
+
         }
+        else{
+//            bookAdapter.filterList(orig);
+
         }
-        if (filteredlist.isEmpty()) {
-        } else {
-        // at last we are passing that filtered
-        // list to our adapter class.
-        bookAdapter.filterList(filteredlist);
-        }
-        }
+
+}
 
 private void setupBookAdapter() {
 
@@ -774,8 +797,16 @@ public void onSuccess(String response) {
         try {
         obj = new JSONObject(response);
         JSONObject all_recievers = obj.getJSONObject("all_recievers");
-        String allCompanionsString=     (String) all_recievers.get("all_recievers");
-        System.out.println("allCompanionsString==>"+allCompanionsString);
+        String allCompanionsString="";
+        if(all_recievers.get("all_recievers")!="null") {
+                try {
+                        allCompanionsString = (String) all_recievers.get("all_recievers");
+                } catch (Exception e) {
+                        System.out.println("allCompanionsString==>"+e.getMessage());
+
+                        Toast.makeText(getApplicationContext(),"No user found",Toast.LENGTH_LONG).show();
+                }
+        }
 //                    if(allCompanionsString!=null)
 //                    {
 //                        String[] allCompanions = allCompanionsString.split("\\|");
@@ -836,10 +867,10 @@ final String[] all_companions = new String[1];
                     public void onResponse(String response) {
 
                         try {
-                            //converting response to json object
+                                System.out.println("obj===>kjhgf");
+                                //converting response to json object
                             JSONObject obj = new JSONObject(response);
                             System.out.println("obj===>" + obj);
-
                             JSONObject all_recievers = obj.getJSONObject("all_recievers");
                             //creating a new user object
 //
@@ -874,7 +905,7 @@ final String[] all_companions = new String[1];
 //                params.put("reciever_pid", "1");
 
 
-                params.put("sender_pid", "101");
+                params.put("sender_pid", sess.getPid());
                 return params;
             }
 
@@ -884,6 +915,7 @@ final String[] all_companions = new String[1];
         }
 
 private void loadBooks(String companions) {
+        System.out.println(":companions:"+companions);
         progressBar.setVisibility(View.VISIBLE);
         String[] allCompanions = companions.split("\\|");
 
@@ -919,10 +951,11 @@ public void onResponse(String response) {
         is_cmp="n";
         }
         }
-        Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,companions);
+        Book b = new Book(profile_id,first_name,middle_name,last_name,gender,mobile_number,profile_status,manglik,occupation,income,physicalpath,origin_family,is_cmp,companions,i);
         mdata.add(b);
         }
         }catch (Exception e){
+                System.out.println("exxxx=="+e.getMessage());
         }
         setupBookAdapter();
 //                        mAdapter = new RecyclerAdapter(HomeActivity.this,products);
@@ -971,7 +1004,12 @@ public void onBookItemClick(int pos,
         TextView ratingBar,TextView item_book_author,TextView item_book_pagesrev,TextView occ) {
         // create intent and send book object to Details activity
         Intent intent = new Intent(this,BookDetailsActivity.class);
-        intent.putExtra("physical_path",mdata.get(pos).getPhysicalpath());
+        int originalPosition = mdata.get(pos).getOriginalPosition();
+
+        System.out.println("poso=="+originalPosition);
+        intent.putExtra("physical_path",mdata.get(originalPosition).getPhysicalpath());
+        intent.putExtra("pid",mdata.get(originalPosition).getPid());
+
         // Pair<View,String> p1 = Pair.create((View)imgContainer,"containerTN"); // second arg is the tansition string Name
         Pair<View,String> p2 = Pair.create((View)imgBook,"bookTN"); // second arg is the tansition string Name
         Pair<View,String> p3 = Pair.create((View)title,"booktitleTN"); // second arg is the tansition string Name

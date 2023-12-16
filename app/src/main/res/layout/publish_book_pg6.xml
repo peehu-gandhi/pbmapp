@@ -5,11 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="202dp"
+        android:layout_height="170dp"
         android:background="@drawable/rect"
         android:gravity="center">
+
         <TextView
             android:id="@+id/txt_choose"
             android:layout_width="wrap_content"
@@ -17,25 +19,25 @@
             android:text="HOBBIES AND PREFERENCES"
             android:textColor="@color/white"
             android:textSize="18sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_choose"
-            android:text="Either upload pdf of start writring now."
+            android:text='"We help to build happiness" - Punjab Biradari'
             android:textColor="@color/white"
             android:textSize="12sp"></TextView>
     </RelativeLayout>
 
     <androidx.legacy.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="35dp" />
+        android:layout_height="21dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/btnchoose"
         android:orientation="vertical">
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -69,9 +71,9 @@
                         android:id="@+id/et_hobbies"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Reading, Painting"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Manglik -->
                     <TextView
@@ -87,9 +89,9 @@
                         android:id="@+id/et_manglik"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Yes"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Required Education of Partner -->
                     <TextView
@@ -105,9 +107,9 @@
                         android:id="@+id/et_required_education"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Graduate"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Age Group Preference for Partner -->
                     <TextView
@@ -123,9 +125,9 @@
                         android:id="@+id/et_age_group_preference"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="25-30 years"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Required Height of Partner -->
                     <TextView
@@ -141,9 +143,9 @@
                         android:id="@+id/et_required_height"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="5'6 - 6'0\"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:text="----"
+                        android:textSize="16sp" />
 
                     <!-- Required Weight of Partner -->
                     <TextView
@@ -159,7 +161,7 @@
                         android:id="@+id/et_required_weight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="140 lbs - 180 lbs"
+                        android:text="----"
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

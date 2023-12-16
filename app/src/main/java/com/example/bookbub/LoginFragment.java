@@ -1,6 +1,7 @@
 package com.example.bookbub;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+
+import static android.app.Activity.RESULT_OK;
+import static nl.dionsegijn.konfetti.models.Shape.*;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LoginFragment#newInstance} factory method to
@@ -42,8 +50,8 @@ public class LoginFragment extends Fragment {
     private String mParam2;
     EditText edno, edpasswd;
     Button btn_login;
-
-
+    SessionManager sessionManager=null;
+    KonfettiView konfettiView;
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -75,9 +83,14 @@ public class LoginFragment extends Fragment {
             getActivity().finish();
             startActivity(new Intent(getActivity(), MainActivity.class));
         }
+         sessionManager = new SessionManager(getContext());
+
         edno = v.findViewById(R.id.edno);
         edpasswd = v.findViewById(R.id.edpasswd);
         btn_login=v.findViewById(R.id.btn_login);
+        btn_login.setBackgroundColor(Color.parseColor("#2052e8"));
+          konfettiView = v.findViewById(R.id.viewKonfetti);
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +98,12 @@ public class LoginFragment extends Fragment {
 
             }
         });
+        if (sessionManager.isLoggedIn()) {
+            // User is already logged in, redirect to the main activity or wherever needed
+            startActivity(new Intent(getContext(), MainActivity.class));
+            getActivity().finish();
+        }
+
         return v;
 
     }
@@ -108,7 +127,7 @@ public class LoginFragment extends Fragment {
     }
     private void login(String no,String passwd)
     {
-        String urllogin="https://myimon.000webhostapp.com/login_book_user.php";
+        String urllogin="https://pbmabad.000webhostapp.com/login.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urllogin,
                 new Response.Listener<String>() {
                     @Override
@@ -116,35 +135,51 @@ public class LoginFragment extends Fragment {
 
                         try {
                             //converting response to json object
-                            JSONObject obj = new JSONObject(response);
 
                             //if no error in response
-                            if (!obj.getBoolean("error")) {
-                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                                //getting the user from the response
-                                JSONObject userJson = obj.getJSONObject("user");
-                                //creating a new user object
-                                User user = new User(
-                                        userJson.getString("no"),
-                                        userJson.getString("passwd"),
-                                        userJson.getString("name"),
-                                        userJson.getInt("books_pub"),
-                                        userJson.getInt("quotes_shared")
-                                );
+                                JSONObject jsonResult = new JSONObject(response);
+                                System.out.println("response=="+response);
+                                String status = jsonResult.getString("status");
+                                if ("success".equals(status)) {
+                                    System.out.println("lllllll=="+jsonResult.getInt("pid"));
+                                    sessionManager.createLoginSession(edno.getText().toString(),String.valueOf(jsonResult.getInt("pid")),jsonResult.getString("gender"),jsonResult.getString("physical_path"),jsonResult.getString("profile_id")); // Save login state
 
+                                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                                    intent.putExtra("gender",jsonResult.getString("gender"));
+                                    intent.putExtra("pid",jsonResult.getInt("pid"));
+                                    System.out.println("pid=="+jsonResult.getInt("pid"));
+                                    System.out.println("gen=="+jsonResult.getString("gender"));
+                                    konfettiView.build()
+                                            .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                                            .setDirection(0.0, 359.0)
+                                            .setSpeed(1f, 5f)
+                                            .setFadeOutEnabled(true)
+                                            .setTimeToLive(2000L)
+                                            .addShapes(RECT, CIRCLE)
+                                            .addSizes(new Size(12,5))
+                                            .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                                            .stream(300, 5000L);
+
+
+                                    startActivityForResult(intent,1);
+                                    getActivity().setResult(RESULT_OK, intent);
+                                    getActivity().finish();
+
+
+                                } else {
+                                    // Login failed
+                                    String message = jsonResult.optString("message", "Login failed");
+                                    Toast.makeText(getContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+                                }
                                 //storing the user in shared preferences
-                                SharedPrefManager.getInstance(getContext()).userLogin(user);
-                                //starting the profile activity
-                                getActivity().finish();
+//                                SharedPrefManager.getInstance(getContext()).userLogin(user);
+//                                //starting the profile activity
+//                                getActivity().finish();
 
 
-                                Intent intent = new Intent(getActivity(), MainActivity.class);
-                                startActivityForResult(intent,1);
 
-                            } else {
-                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
+
+                        } catch (Exception e) {
                             System.out.println("error=="+e.getMessage());
                             e.printStackTrace();
                         }
@@ -154,15 +189,15 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-
+                        System.out.println("error==>>"+error.getMessage());
                     }
                 })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("no", no);
-                params.put("passwd", passwd);
+                params.put("username", no);
+                params.put("password", passwd);
                 return params;
             }
         };
