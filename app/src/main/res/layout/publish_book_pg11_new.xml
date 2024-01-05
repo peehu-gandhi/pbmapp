@@ -80,6 +80,15 @@
             android:textColor="@android:color/white"
          android:drawableLeft="@android:drawable/ic_menu_gallery"
          android:text="Upload from Gallery"/>
+        <EditText
+            android:id="@+id/et_passwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password(Kindly remember this password for login purposes)"
+            android:textSize="16sp"
+            android:backgroundTint="#2052e8"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
         <androidx.legacy.widget.Space
             android:layout_width="match_parent"
             android:layout_height="30dp" />

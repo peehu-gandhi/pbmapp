@@ -69,6 +69,8 @@ INJECTED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:2:1-45:
 		INJECTED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:2:1-45:12
 		INJECTED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:2:70-116
 	android:versionCode
 		INJECTED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:2:1-45:12
@@ -110,15 +112,19 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\admin\.gradle\cach
 	android:supportsRtl
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:10:9-40
+		REJECTED from [com.github.smarteist:autoimageslider:1.4.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\299edf14469830d7860a52a53f2e98a2\jetified-autoimageslider-1.4.0\AndroidManifest.xml:13:9-41
+		REJECTED from [nl.dionsegijn:konfetti:1.1.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\174ab06f4b64deb5a546c5c2ec59185d\jetified-konfetti-1.1.0\AndroidManifest.xml:11:18-50
 	android:roundIcon
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:11:9-54
 	android:icon
-		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:9:9-39
+		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:9:9-45
 	android:allowBackup
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:14:9-57
+	tools:replace
+		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:13:9-38
 	android:usesCleartextTraffic
 		ADDED from D:\bookbub\BookBub-master\app\src\main\AndroidManifest.xml:15:9-44
 activity#com.example.bookbub.SplashActivity

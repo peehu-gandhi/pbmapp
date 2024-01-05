@@ -1,4 +1,4 @@
-#Sat Dec 16 23:31:18 IST 2023
+#Fri Jan 05 21:34:58 IST 2024
 base.0=D\:\\bookbub\\BookBub-master\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

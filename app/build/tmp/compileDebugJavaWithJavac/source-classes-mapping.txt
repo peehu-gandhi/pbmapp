@@ -147,6 +147,7 @@ com/example/bookbub/RegisterFragment.java
  com.example.bookbub.RegisterFragment
  com.example.bookbub.RegisterFragment$1
  com.example.bookbub.RegisterFragment$1UploadImage
+ com.example.bookbub.RegisterFragment$1UploadImage$1
  com.example.bookbub.RegisterFragment$2
  com.example.bookbub.RegisterFragment$3
  com.example.bookbub.RegisterFragment$4

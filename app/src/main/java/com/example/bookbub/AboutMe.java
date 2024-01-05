@@ -343,7 +343,7 @@ public class AboutMe extends Fragment {
                                         et_first_name.setText(object.getString("first_name"));
                                         et_middle_name.setText(object.getString("middle_name"));
                                         et_last_name.setText(object.getString("last_name"));
-                                        et_gender.setText((object.getString("gender")=="M")?"Male":"Female");
+                                        et_gender.setText((object.getString("gender")=="M" ||object.getString("gender").equalsIgnoreCase("Male" ))?"Male":"Female");
                                         et_dob.setText(object.getString("dob_place"));
                                         et_place_of_birth.setText(object.getString("dob_time"));
                                         et_profile_status.setText(object.getString("profile_status"));

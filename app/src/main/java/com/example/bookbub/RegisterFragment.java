@@ -22,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.text.TextUtils;
@@ -83,11 +85,13 @@ import static android.app.Activity.RESULT_OK;
 public class RegisterFragment extends Fragment implements View.OnClickListener {
     AppCompatButton btn_register;
     Uri filePath;
+    String uploadImage1,uploadImage2,uploadImage3,uploadImage4,uploadImage5;
     String strnm="new";
-    EditText mobno,edname,edpasswd;
+    EditText mobno,edname,edpasswd,et_passwd;
     String name,no,passwd;
     private TextView[] dots;
     ViewGroup viewGroup;
+
     private int[] layouts;
     private ViewPager viewPager;
     private LinearLayout dotsLayout;
@@ -452,6 +456,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 RequestOptions options = new RequestOptions()
                         .placeholder(R.drawable.bookcover2)
                         .error(R.drawable.bookcover2);
+
+
+
+
 
             }
             if(position == 1)
@@ -868,13 +876,37 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             {
                 btn_register=(AppCompatButton) view.findViewById(R.id.btn_register);
                 btn_proof_2000 =(AppCompatButton ) view.findViewById(R.id.btn_proof_2000);
-
+                et_passwd=view.findViewById(R.id.et_passwd);
                 proof_2000=(ImageView) view.findViewById(R.id.proof_2000);
                 proof_2000.setImageResource(R.drawable.upi);
 
                 btn_register.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if (TextUtils.isEmpty(et_first_name.getText())) {
+                            et_first_name.setError("Please enter your First Name");
+                            et_first_name.requestFocus();
+                            return ;
+
+                        }
+
+                        if (TextUtils.isEmpty(et_last_name.getText())) {
+                            et_last_name.setError("Please enter your Last Name");
+                            et_last_name.requestFocus();
+                            return ;
+                        }
+                        if (TextUtils.isEmpty(et_mobile_number.getText())) {
+                            et_mobile_number.setError("Please enter your Nobile Number");
+                            et_mobile_number.requestFocus();
+                            return ;
+                        }
+                        if (TextUtils.isEmpty(et_passwd.getText())) {
+                            et_passwd.setError("Please enter your Password");
+                            et_passwd.requestFocus();
+                            return ;
+
+                        }
+
                         registerUser();
                         Intent i=new Intent(getContext(),LoginAndRegister.class);
                         getActivity().startActivity(i);
@@ -949,7 +981,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     }
     private void uploadImage(){
         class UploadImage extends AsyncTask<Bitmap,Void,String>{
-
+            int errcode=0;
             ProgressDialog loading;
             RequestHandler rh = new RequestHandler();
 
@@ -972,15 +1004,36 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             @Override
             protected String doInBackground(Bitmap... params) {
                 Bitmap bitmap = params[0];
-                String uploadImage1 = getStringImage(bitmap);
-                Bitmap bitmap1=params[1];
-                String uploadImage2 = getStringImage(bitmap1);
-                Bitmap bitmap2=params[2];
-                String uploadImage3 = getStringImage(bitmap2);
-                Bitmap bitmap3=params[3];
-                String uploadImage4 = getStringImage(bitmap3);
-                Bitmap bitmap4=params[4];
-                String uploadImage5 = getStringImage(bitmap4);
+                String errorMsg="Please upload your Profile picture";
+                try {
+                     uploadImage1 = getStringImage(bitmap);
+                     errorMsg="Please upload your PAN or Aadhar Card";
+                    Bitmap bitmap1=params[1];
+                    uploadImage2 = getStringImage(bitmap1);
+                    errorMsg="Please upload your Latest Education Qualification";
+                    Bitmap bitmap2=params[2];
+                    uploadImage3 = getStringImage(bitmap2);
+                    errorMsg="Please upload your Income Proof";
+                    Bitmap bitmap3=params[3];
+                    uploadImage4 = getStringImage(bitmap3);
+                    errorMsg="Please upload Proof of Rupees 2000.";
+                    Bitmap bitmap4=params[4];
+
+                    uploadImage5 = getStringImage(bitmap4);
+                }catch(Exception e){
+                    String finalErrorMsg = errorMsg;
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast toast = Toast.makeText(getContext(), finalErrorMsg, Toast.LENGTH_SHORT);
+                            toast.show();
+                            errcode=1;
+                        }
+                    });
+
+
+                }
+
                 System.out.println("bm2="+bitmap);
 //                String[] uploadImages = new String[params.length];
 //                for (int i = 0; i < params.length; i++) {
@@ -1030,7 +1083,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 data.put("income_proof", uploadImage4);
                 data.put("fee_submitted_2000_proof", uploadImage5);
                 data.put("profile_status", profile_status);
-
+                data.put("passwd",et_passwd.getText().toString());
                 String result = rh.sendPostRequest(regurl,data);
 
                 return result;
@@ -1038,16 +1091,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         }
 
         UploadImage ui = new UploadImage();
+        if(ui.errcode==1)
+        {
+            ui.cancel(true);
+
+        }
         ui.execute(bitmap,bitmap_aadhar,bitmap_edu_quali,bitmap_income_proof,bitmap_proof_2000);
     }
 
     private void registerUser() {
-
         uploadImage();
 
-
-
     }
+
     class MyAsyncTask extends AsyncTask<String, String, String>
     {
         View v;

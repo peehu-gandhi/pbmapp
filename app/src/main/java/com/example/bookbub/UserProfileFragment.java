@@ -362,7 +362,7 @@ public class UserProfileFragment extends AppCompatActivity implements BookCallba
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("recieverPid", sess.getPid());
+                params.put("recieverPid", sess.getProfile());
                 return params;
             }
 
